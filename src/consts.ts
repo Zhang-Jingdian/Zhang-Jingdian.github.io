@@ -3,13 +3,13 @@
 
 // Site title and description
 export const SITE_LANG = "en";
-export const SITE_TAB = "Frosti";
+export const SITE_TAB = "Zhang-Jingdian";
 export const SITE_TITLE = "Frosti 🧊";
 export const SITE_DESCRIPTION = "A blog template";
 export const DATE_FORMAT = "ddd MMM DD YYYY";
 
 // User profile information
-export const USER_NAME = "EveSunMaple";
+export const USER_NAME = "Zhang-Jingdian";
 export const USER_SITE = "https://Zhang-Jingdian.github.io";
 export const USER_AVATAR = "/profile.webp";
 
@@ -92,13 +92,13 @@ export const socialIcons = [
     svg: "support",
   },
   {
-    href: "https://github.com/EveSunMaple",
+    href: "https://github.com/Zhang-Jingdian",
     ariaLabel: "Github",
     title: "Github",
     svg: "github",
   },
   {
-    href: "https://space.bilibili.com/438392347",
+    href: "https://space.bilibili.com/364279279",
     ariaLabel: "BiliBili",
     title: "BiliBili",
     svg: "bilibili",
