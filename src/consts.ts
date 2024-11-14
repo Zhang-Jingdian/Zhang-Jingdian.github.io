@@ -3,13 +3,13 @@
 
 // Site title and description
 export const SITE_LANG = "en";
-export const SITE_TAB = "Zhang-Jingdian";
-export const SITE_TITLE = "Frosti 🧊";
+export const SITE_TAB = "pill";
+export const SITE_TITLE = "pill";
 export const SITE_DESCRIPTION = "A blog template";
 export const DATE_FORMAT = "ddd MMM DD YYYY";
 
 // User profile information
-export const USER_NAME = "Zhang-Jingdian";
+export const USER_NAME = "pill";
 export const USER_SITE = "https://Zhang-Jingdian.github.io";
 export const USER_AVATAR = "/profile.webp";
 
@@ -58,6 +58,13 @@ export const menuItems = [
         svg: "heart",
         target: "_self",
       }, // Life category
+      {
+        id: "ctf",
+        text: "CTF blogs",
+        href: "/blog/categories/ctf",
+        svg: "ctf",
+        target: "_self",
+      }, // ctf category
     ],
   }, // Blog page with sub-items
   {
@@ -77,7 +84,7 @@ export const menuItems = [
   {
     id: "contact",
     text: "Contact",
-    href: "mailto:contact.evesunmaple@outlook.com", // Contact email
+    href: "mailto:contact.2157429750@qq.com", // Contact email
     target: "_blank", // Open in a new tab
     svg: "contact",
   },

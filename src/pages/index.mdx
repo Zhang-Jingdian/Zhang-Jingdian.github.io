@@ -23,16 +23,43 @@ import LinkCard from "../components/page/LinkCard.astro";
 
   <BaseCard title="Home">
   
-# Introduction
----
-## About Me
-
-- **I am a student at the University majoring in software engineering.**
-- **My study's focus is on full-stack development and information security.**
-- **My motto is "Never easlily give up ,Never prematurely satisify".**
-
-
-
----
+## Content
+<>
+<table>
+  <tr>
+    <td>
+      <LinkCard
+        title="About"
+        desc="About Me"
+        url="/about"
+      />
+    </td>
+    <td>
+    <LinkCard
+        title="Blog"
+        desc="full-stack,security,tech,life"
+        url="/blog"
+      />
+      </td>
+  </tr>
+  <tr>
+  <td>
+      <LinkCard
+        title="Project"
+        desc="some projects"
+        url="/project"
+      />
+    </td>
+    <td>
+    <LinkCard
+        title="Friend"
+        desc="my friends"
+        url="/friend"
+      />
+      </td>
+  </tr>
+</table>
+</> 
   </BaseCard>
+
 </BaseLayout>
