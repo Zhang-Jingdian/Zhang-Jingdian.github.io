@@ -62,7 +62,7 @@ export const menuItems = [
         id: "ctf",
         text: "CTF blogs",
         href: "/blog/categories/ctf",
-        svg: "ctf",
+        svg: "heart",
         target: "_self",
       }, // ctf category
     ],
