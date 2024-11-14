@@ -32,40 +32,11 @@ export const menuItems = [
   { id: "about", text: "About", href: "/about", svg: "about", target: "_self" }, // About page
   {
     id: "blog",
-    text: "Blogs",
+    text: "Blog",
     href: "/blog",
     svg: "blog",
     target: "_self",
-    subItems: [
-      {
-        id: "all",
-        text: "All blogs",
-        href: "/blog",
-        svg: "post",
-        target: "_self",
-      }, // All blog
-      {
-        id: "tech",
-        text: "Tech blogs",
-        href: "/blog/categories/tech",
-        svg: "cube",
-        target: "_self",
-      }, // Technology category
-      {
-        id: "life",
-        text: "Life blogs",
-        href: "/blog/categories/life",
-        svg: "heart",
-        target: "_self",
-      }, // Life category
-      {
-        id: "ctf",
-        text: "CTF blogs",
-        href: "/blog/categories/ctf",
-        svg: "heart",
-        target: "_self",
-      }, // ctf category
-    ],
+
   }, // Blog page with sub-items
   {
     id: "project",
@@ -84,7 +55,7 @@ export const menuItems = [
   {
     id: "contact",
     text: "Contact",
-    href: "mailto:contact.2157429750@qq.com", // Contact email
+    href: "mailto:2157429750@qq.com", // Contact email
     target: "_blank", // Open in a new tab
     svg: "contact",
   },
