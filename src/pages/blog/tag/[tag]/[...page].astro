@@ -5,6 +5,7 @@ import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import BaseCard from "../../../../components/BaseCard.astro";
 import { getCollection } from "astro:content";
 import { t } from "i18next";
+import Search from "astro-pagefind/components/Search";
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const all_posts = await getCollection("blog");
@@ -16,7 +17,7 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
   all_posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return all_tags.flatMap((tag) => {
     const filtered_posts = all_posts.filter((post) =>
-      post.data.tags?.includes(tag),
+      post.data.tags?.includes(tag)
     );
     return paginate(filtered_posts, {
       params: { tag },
@@ -57,9 +58,12 @@ const pageLinks = generatePageLinks(totalPages);
 ---
 
 <BaseLayout title="Tag">
-  <BaseCard title="Tag">
-    <h1 id="h1">{`${t("label.tagPage")} - ${params.tag}`}</h1>
-    <hr />
+  <BaseCard title="search">
+    <Search
+      id="search"
+      className="pagefind-ui"
+      uiOptions={{ showImages: false }}
+    />
   </BaseCard>
   {
     page.data.map((post: Post) => (
@@ -141,7 +145,7 @@ const pageLinks = generatePageLinks(totalPages);
                 >
                   {link}
                 </a>
-              ),
+              )
             )}
           </>
         ) : (
