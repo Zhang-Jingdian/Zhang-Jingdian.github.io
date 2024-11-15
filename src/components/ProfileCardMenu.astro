@@ -10,7 +10,7 @@ import { Icon } from "astro-icon/components";
     menuItems.map((item) => (
       
       <li class="w-full relative">
-        {(
+        {
           <a
             tabindex="0"
             class="flex justify-center lg:justify-start items-center text-center text-xl md:text-3xl lg:text-xl font-bold p-4"
@@ -25,7 +25,7 @@ import { Icon } from "astro-icon/components";
             </span>
             <span class="hidden lg:inline ml-2">{item.text}</span>
           </a>
-        )}
+        }
       </li>
     ))
   }
