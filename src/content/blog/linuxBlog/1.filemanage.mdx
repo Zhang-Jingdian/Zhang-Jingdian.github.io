@@ -1,0 +1,146 @@
+---
+title: 1. File Management in Linux
+description: some linux commands to manage files and directories
+pubDate: 11 16 2024
+image: /image/linux/linux1.webp
+categories:
+  - linux
+tags:
+  - linux command
+  - file management
+  - command
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+| Command | Description |
+| --- | --- |
+| ls | list files and directories in a directory |
+| cd | change the current working directory |
+| mkdir | create a new directory |
+| mv | move files or directories and rename them to a new name or location |
+| cp | copy files or directories to a new location or name |
+| pwd | print the current working directory |
+| tar | create or extract a tar archive |
+| chmod | change the file mode or access permissions |
+
+## ls
+list files and directories in a directory.
+
+```bash
+ls [options] (directory)
+```
+| Options | Description |
+| --- | --- |
+| -a | show all files|
+| -l | show detailed information |
+| -h | show file sizes |
+
+## cd
+change the current working directory.
+
+```bash
+cd [options] (directory)
+```
+| Options | Description |
+| --- | --- |
+| -- | move the last time directory |
+| .. | move to the parent directory |
+| ~ | move to the home directory |
+
+## mkdir
+create a new directory.
+
+```bash
+mkdir [options] (directory name)
+```
+| Options | Description |
+| --- | --- |
+| -p | create multiple directories down the hierarchy |
+| -m | set file mode |
+
+## mv
+move files or directories and rename them to a new name or location.
+
+```bash
+mv [options] (file/directory) (new name file/directory)
+```
+| Options | Description |
+| --- | --- |
+| -f | force move |
+| -v | show verbose information |
+| -b | backup the original file |
+
+
+
+## cp
+copy files or directories to a new location or name.
+
+```bash
+cp [options] (file/directory) (new name file/directory)
+```
+| Options | Description |
+| --- | --- |
+| -a | preserve all attributes |
+| -f | force copy |
+| -s | copy symbolic links as symbolic links |
+
+
+
+## pwd
+print the current working directory.
+
+```bash
+pwd [options] 
+```
+| Options | Description |
+| --- | --- |
+| -P | print the physical directory name |
+| -L | print the logical directory name |
+
+## tar
+create or extract a tar archive.
+
+```bash
+tar [options] (file/directory) (new name file/directory)
+```
+| Options | Description |
+| --- | --- |
+| -c | create a new archive |
+| -x | extract an archive |
+| -v | show verbose information |
+| -f | specify the archive file name |
+| -z | use gzip compression |
+| -j | use bzip2 compression |
+| -J | use xz compression |
+| -C | change to directory before extracting |
+
+
+
+## chmod
+change the file mode or access permissions.
+
+```bash
+chmod [options] (mode) (file/directory)
+```
+| Options | Description |
+| --- | --- |
+| -R | recursive mode |
+| -u | user permission |
+| -g | group permission |
+| -o | other permission |
+
+
+
+
+
+
+
