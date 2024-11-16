@@ -3,13 +3,13 @@
 
 // Site title and description
 export const SITE_LANG = "en";
-export const SITE_TAB = "pill💊";
-export const SITE_TITLE = "pill💊";
+export const SITE_TAB = "💊";
+export const SITE_TITLE = "💊";
 export const SITE_DESCRIPTION = "A blog";
 export const DATE_FORMAT = "ddd MMM DD YYYY";
 
 // User profile information
-export const USER_NAME = "pill💊";
+export const USER_NAME = "💊";
 export const USER_SITE = "https://Zhang-Jingdian.github.io";
 export const USER_AVATAR = "/profile.webp";
 
