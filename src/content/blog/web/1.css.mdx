@@ -1,0 +1,113 @@
+---
+title: Pseudo-classes
+description: Pseudo-class selectors are CSS selectors used to style elements based on their state or other special conditions. Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.
+pubDate: 11 17 2024
+image: /image/web/web1.webp
+categories:
+  - web
+tags:
+  - css
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+**Pseudo-class selectors** are CSS selectors used to style elements based on their **state** or other **special conditions**. Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.
+
+### Common Pseudo-classes
+Here are some of the most commonly used pseudo-classes and their purposes:
+
+1. **Link-related pseudo-classes(commonly used)**
+   ```css
+   a:link { color: blue; }      /* Unvisited links */
+   a:visited { color: purple; } /* Visited links */
+   a:hover { color: red; }      /* Link when hovered over */
+   a:active { color: orange; }  /* Link when clicked */
+   ```
+   The order aways is `:link`, `:visited`, `:hover`, `:active`
+2. **User interaction**
+   ```css
+   button:focus { outline: 2px solid blue; }  /* Element that has focus */
+   input:disabled { background-color: #ddd; } /* Disabled input elements */
+   input:checked { background-color: green; } /* Checked input elements (like checkboxes) */
+   ```
+
+3. **Structural pseudo-classes**
+   ```css
+   p:first-child { font-weight: bold; }   /* The first child of its parent */
+   p:last-child { color: red; }           /* The last child of its parent */
+   p:nth-child(2) { font-style: italic; } /* The second child of its parent */
+   p:nth-of-type(3) { color: blue; }      /* The third element of a specific type */
+   p:only-child { text-align: center; }   /* The only child of its parent */
+   ```
+
+4. **Negation pseudo-class**
+   ```css
+   div:not(.active) { opacity: 0.5; } /* Selects divs that do not have the class "active" */
+   ```
+
+5. **Empty elements**
+   ```css
+   p:empty { display: none; } /* Hides elements with no children (including text nodes) */
+   ```
+
+6. **State pseudo-classes**
+   ```css
+   input:valid { border-color: green; }   /* Input that passes validation */
+   input:invalid { border-color: red; }   /* Input that fails validation */
+   input:required { border-color: blue; } /* Required input field */
+   ```
+
+### Difference Between Pseudo-classes and Pseudo-elements
+- **Pseudo-classes**: Target elements based on state or other conditions (e.g., `:hover`, `:focus`).
+- **Pseudo-elements**: Target specific parts of an element (e.g., `::before`, `::after`).
+
+### Example of Pseudo-class Usage
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-class Example</title>
+    <style>
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+        li:nth-child(odd) {
+            background-color: #f0f0f0;
+        }
+        input:focus {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <a href="#">Hover over me</a>
+    <br>
+    <input type="text" placeholder="Type something here">
+</body>
+</html>
+```
+
+<LinkCard
+    desc="click it to see the output"
+    url="/files/web/web1.html"
+/>
+### Output Explanation
+- When hovering over the button, its color changes smoothly, indicating that it's interactive.
+- When the button is clicked, it briefly darkens and appears to be pressed down, enhancing the user experience.
+
+Pseudo-class selectors are incredibly useful in web development, enabling you to style elements dynamically based on user actions and element states. Understanding and utilizing these selectors can greatly enhance the interactivity and design of your web pages.
