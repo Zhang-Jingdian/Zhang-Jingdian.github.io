@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-element Example</title>
+    <style>
+        /* Basic button styling */
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+        }
+
+        /* Insert an icon before the button text */
+        .button::before {
+            content: '🚀';
+            /* Insert a rocket icon */
+            margin-right: 8px;
+        }
+
+        /* Insert an arrow after the button text */
+        .button::after {
+            content: ' ➜';
+            margin-left: 8px;
+        }
+
+        /* Style for text selection */
+        ::selection {
+            background-color: yellow;
+            /* Highlighted text background */
+            color: black;
+            /* Highlighted text color */
+        }
+    </style>
+</head>
+
+<body>
+    <button class="button">Click Me</button>
+    <p>Try selecting this text to see the custom selection style.</p>
+</body>
+
+</html>
