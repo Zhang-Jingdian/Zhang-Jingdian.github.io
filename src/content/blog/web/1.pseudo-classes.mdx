@@ -1,6 +1,6 @@
 ---
 title: Pseudo-classes
-description: Pseudo-class selectors are CSS selectors used to style elements based on their state or other special conditions. Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.
+description: Pseudo-class selectors style elements based on their state or conditions targeting elements.
 pubDate: 11 17 2024
 image: /image/web/web1.webp
 categories:
@@ -19,11 +19,9 @@ import Warning from "../../../components/blog/warning.astro";
 import TimeLine from "../../../components/page/TimeLine.astro";
 import LinkCard from "../../../components/page/LinkCard.astro";
 
-**Pseudo-class selectors** are CSS selectors used to style elements based on their **state** or other **special conditions**. Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.
-
+<Collapse title="Pseudo-class selectors are CSS selectors used to style elements based on their state or other special conditions.">Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.</Collapse>
 ### Common Pseudo-classes
-Here are some of the most commonly used pseudo-classes and their purposes:
-
+<Collapse title="Here are some of the most commonly used pseudo-classes and their purposes:">
 1. **Link-related pseudo-classes(commonly used)**
    ```css
    a:link { color: blue; }      /* Unvisited links */
@@ -65,7 +63,7 @@ Here are some of the most commonly used pseudo-classes and their purposes:
    input:invalid { border-color: red; }   /* Input that fails validation */
    input:required { border-color: blue; } /* Required input field */
    ```
-
+</Collapse>
 ### Difference Between Pseudo-classes and Pseudo-elements
 - **Pseudo-classes**: Target elements based on state or other conditions (e.g., `:hover`, `:focus`).
 - **Pseudo-elements**: Target specific parts of an element (e.g., `::before`, `::after`).

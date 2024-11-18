@@ -1,6 +1,6 @@
 ---
 title: Pseudo-classes
-description: Pseudo-class selectors are CSS selectors used to style elements based on their state or other special conditions. Unlike regular selectors that target actual HTML elements, pseudo-classes target elements based on factors like user interaction, element position, or specific attributes.
+description: Pseudo-class selectors in CSS style elements based on conditions targeting elements.
 pubDate: 11 17 2024
 image: /image/web/web2.webp
 categories:
@@ -19,15 +19,22 @@ import Warning from "../../../components/blog/warning.astro";
 import TimeLine from "../../../components/page/TimeLine.astro";
 import LinkCard from "../../../components/page/LinkCard.astro";
 
+<Collapse title="Pseudo-elements in CSS are used to style specific parts of an element's content. 
+">
+Unlike pseudo-classes, which target elements based on their state 
 
-**Pseudo-elements** in CSS are used to style specific parts of an element's content. Unlike pseudo-classes, which target elements based on their state (like `:hover` or `:focus`), pseudo-elements allow you to apply styles to parts of an element, such as the first letter, first line, or to insert content before or after an element.
+(like `:hover` or `:focus`), 
 
+pseudo-elements allow you to apply styles to parts of an element, 
+
+such as the first letter, first line, or to insert content before or after an element.
+</Collapse>
 ### Difference Between Pseudo-classes and Pseudo-elements
 - **Pseudo-classes** (`:hover`, `:focus`, etc.): Target elements based on their state.
 - **Pseudo-elements** (`::before`, `::after`, etc.): Target specific parts of an element's content.
 
 ### Common Pseudo-elements
-Here are some frequently used pseudo-elements and their purposes:
+<Collapse title="Here are some frequently used pseudo-elements and their purposes:">
 
 1. **`::before` and `::after`**
    - Used to insert content **before** or **after** an element's actual content. This is commonly used for decorative elements or icons.
@@ -69,7 +76,7 @@ Here are some frequently used pseudo-elements and their purposes:
        color: black;
    }
    ```
-
+</Collapse>
 ### Example: Using Pseudo-elements
 The following example demonstrates how to use `::before` and `::after` to insert content around a button, as well as `::selection` to change the appearance of selected text.
 

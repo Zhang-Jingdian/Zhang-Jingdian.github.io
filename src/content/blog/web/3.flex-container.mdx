@@ -1,6 +1,6 @@
 ---
 title: Flex
-description: Flexbox (short for Flexible Box) is a powerful layout model that helps address issues related to traditional layouts (like `float`, `table`, `inline-block`). It simplifies tasks like alignment, centering, and responsiveness.
+description: Flexbox is a flexible layout model.
 pubDate: 11 18 2024
 image: /image/web/web3.webp
 categories:
@@ -47,7 +47,7 @@ Flexbox involves two main components:
 ```
 
 ### 2. Flex Container Properties
-Flex containers have several properties to control the layout of their child items:
+<Collapse title="Flex containers have several properties to control the layout of their child items:">
 
 - **`flex-direction`**: Defines the main axis direction (horizontal by default).
   ```css
@@ -92,9 +92,10 @@ Flex containers have several properties to control the layout of their child ite
   align-content: space-around;  /* Space around lines */
   align-content: stretch;     /* Stretch lines to fit (default) */
   ```
-
+</Collapse>
 ### 3. Flex Item Properties
-Individual flex items have properties to control their own layout behavior:
+<Collapse title="Individual flex items have properties to control their own layout behavior:">
+
 
 - **`flex-grow`**: Defines the item's growth factor (how much it should expand relative to others).
   ```css
@@ -118,7 +119,7 @@ Individual flex items have properties to control their own layout behavior:
   align-self: center;     /* Center align */
   align-self: stretch;    /* Stretch to fill */
   ```
-
+</Collapse>
 ### 4. Example: Responsive Navigation Bar
 
 In this example:
@@ -229,7 +230,10 @@ body {
   }
 }
 ```
-
+<LinkCard
+    desc="Click it to see the code for this example!"
+    url="/files/web/web3.html"
+      />
 ### Explanation
 1. **Navbar Container (`.navbar`)**:
    - `display: flex` sets the container as a flexbox.
@@ -244,10 +248,7 @@ body {
    - For screens smaller than `768px`, the `flex-direction` of the `.navbar` and `.nav-links` changes to `column` to stack items vertically.
    - The button aligns to the bottom-right with `align-self: flex-end`.
 
-<LinkCard
-    desc="Click it to see the code for this example!"
-    url="/files/web/web3.html"
-      />
+
 ### Result
 On larger screens, the logo, navigation links, and button appear in a single line. On smaller screens, they stack vertically for a clean, responsive layout.
 
