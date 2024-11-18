@@ -1,0 +1,254 @@
+---
+title: Flex
+description: Flexbox (short for Flexible Box) is a powerful layout model that helps address issues related to traditional layouts (like `float`, `table`, `inline-block`). It simplifies tasks like alignment, centering, and responsiveness.
+pubDate: 11 18 2024
+image: /image/web/web3.webp
+categories:
+  - web
+tags:
+  - css
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+
+### 1. Basic Concepts
+
+Flexbox involves two main components:
+- **Container (Flex Container)**: The element with `display: flex`.
+- **Items (Flex Items)**: The direct children of the flex container.
+
+```html
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+}
+.item {
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  margin: 5px;
+}
+```
+
+### 2. Flex Container Properties
+Flex containers have several properties to control the layout of their child items:
+
+- **`flex-direction`**: Defines the main axis direction (horizontal by default).
+  ```css
+  flex-direction: row;          /* Horizontal, left to right (default) */
+  flex-direction: row-reverse;  /* Horizontal, right to left */
+  flex-direction: column;       /* Vertical, top to bottom */
+  flex-direction: column-reverse; /* Vertical, bottom to top */
+  ```
+
+- **`justify-content`**: Controls alignment along the main axis.
+  ```css
+  justify-content: flex-start;   /* Align items to the start (default) */
+  justify-content: flex-end;     /* Align items to the end */
+  justify-content: center;       /* Center items */
+  justify-content: space-between;/* Evenly distribute with space between */
+  justify-content: space-around; /* Space around items */
+  justify-content: space-evenly; /* Equal space between and around items */
+  ```
+
+- **`align-items`**: Controls alignment along the cross axis (vertical by default).
+  ```css
+  align-items: flex-start; /* Align to the top */
+  align-items: flex-end;   /* Align to the bottom */
+  align-items: center;     /* Center align */
+  align-items: baseline;   /* Align by text baseline */
+  align-items: stretch;    /* Stretch to fill container (default) */
+  ```
+
+- **`flex-wrap`**: Controls whether items should wrap if they overflow the container.
+  ```css
+  flex-wrap: nowrap;        /* No wrapping (default) */
+  flex-wrap: wrap;          /* Wrap to the next line */
+  flex-wrap: wrap-reverse;  /* Wrap to the next line in reverse */
+  ```
+
+- **`align-content`**: Controls alignment of multiple lines along the cross axis (works when `flex-wrap` is set).
+  ```css
+  align-content: flex-start;  /* Align lines to the top */
+  align-content: flex-end;    /* Align lines to the bottom */
+  align-content: center;      /* Center align lines */
+  align-content: space-between; /* Space between lines */
+  align-content: space-around;  /* Space around lines */
+  align-content: stretch;     /* Stretch lines to fit (default) */
+  ```
+
+### 3. Flex Item Properties
+Individual flex items have properties to control their own layout behavior:
+
+- **`flex-grow`**: Defines the item's growth factor (how much it should expand relative to others).
+  ```css
+  flex-grow: 1; /* The item will take up remaining space */
+  ```
+
+- **`flex-shrink`**: Defines the item's shrink factor (how much it should shrink relative to others).
+  ```css
+  flex-shrink: 1; /* The item can shrink if needed */
+  ```
+
+- **`flex-basis`**: Specifies the initial size of the item before growing or shrinking.
+  ```css
+  flex-basis: 100px; /* Sets the base width of the item */
+  ```
+
+- **`align-self`**: Overrides the `align-items` property for a specific item.
+  ```css
+  align-self: flex-start; /* Align to the top */
+  align-self: flex-end;   /* Align to the bottom */
+  align-self: center;     /* Center align */
+  align-self: stretch;    /* Stretch to fill */
+  ```
+
+### 4. Example: Responsive Navigation Bar
+
+In this example:
+- The navigation bar will have a **logo** on the left, **navigation links** in the center, and a **button** on the right.
+- It will be responsive — the items will stack vertically on smaller screens.
+
+### HTML Structure
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Navbar Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">MyLogo</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="btn">Sign Up</button>
+  </nav>
+</body>
+</html>
+```
+
+### CSS Styling
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Space between logo, links, and button */
+  align-items: center; /* Vertically center items */
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffdd57;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #ffdd57;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffcc00;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    width: 100%;
+    margin-top: 10px;
+  }
+  .nav-links li {
+    margin: 10px 0;
+  }
+  .btn {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+}
+```
+
+### Explanation
+1. **Navbar Container (`.navbar`)**:
+   - `display: flex` sets the container as a flexbox.
+   - `justify-content: space-between` aligns the logo, links, and button with equal space between them.
+   - `align-items: center` vertically centers all items.
+
+2. **Navigation Links (`.nav-links`)**:
+   - `display: flex` aligns the navigation items in a row.
+   - `list-style: none` removes bullet points.
+
+3. **Responsive Design**:
+   - For screens smaller than `768px`, the `flex-direction` of the `.navbar` and `.nav-links` changes to `column` to stack items vertically.
+   - The button aligns to the bottom-right with `align-self: flex-end`.
+
+<LinkCard
+    desc="Click it to see the code for this example!"
+    url="/files/web/web3.html"
+      />
+### Result
+On larger screens, the logo, navigation links, and button appear in a single line. On smaller screens, they stack vertically for a clean, responsive layout.
+
+Would you like a visualization of this example? 😊
