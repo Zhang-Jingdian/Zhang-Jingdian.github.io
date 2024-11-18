@@ -1,0 +1,67 @@
+---
+title:  At in CSS
+description:  In CSS, the `@` symbol is used to denote at-rules.
+pubDate: 11 18 2024
+image: /image/web/web6.webp
+categories:
+  - web
+tags:
+  - css
+---
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+
+In CSS, the `@` symbol is used to denote **at-rules**, which are special instructions that provide additional functionality or behavior for your stylesheets. Some common at-rules include:
+
+1. **@import**: Used to import external CSS files into the current stylesheet.
+   ```css
+   @import url("styles.css");
+   ```
+
+2. **@media**: Defines different styles for different devices or screen sizes (responsive design).
+   ```css
+   @media screen and (max-width: 600px) {
+     body {
+       background-color: lightblue;
+     }
+   }
+   ```
+
+3. **@font-face**: Allows you to define custom fonts to use in your website.
+   ```css
+   @font-face {
+     font-family: "MyCustomFont";
+     src: url("fonts/mycustomfont.woff2") format("woff2");
+   }
+   ```
+
+4. **@keyframes**: Defines animations by specifying a sequence of keyframes.
+   ```css
+   @keyframes example {
+     from {
+       background-color: red;
+     }
+     to {
+       background-color: blue;
+     }
+   }
+   ```
+
+5. **@supports**: Used to apply styles only if a certain feature or property is supported by the browser.
+   ```css
+   @supports (display: grid) {
+     .container {
+       display: grid;
+     }
+   }
+   ```
+
+These at-rules enable more advanced and flexible styling in CSS.

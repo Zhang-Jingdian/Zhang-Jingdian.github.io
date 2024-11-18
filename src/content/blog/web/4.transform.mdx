@@ -1,0 +1,143 @@
+---
+title: Transform
+description: The transform property in CSS is used to apply 2D or 3D transformations to elements
+pubDate: 11 18 2024
+image: /image/web/web4.webp
+categories:
+  - web
+tags:
+  - css
+---
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+
+The `transform` property in CSS is used to apply **2D or 3D transformations** to elements, such as rotating, scaling, translating, or skewing, without affecting the document flow.
+
+### Common `transform` values:
+<Collapse title="Common transform values">
+1. **`translate(x, y)`**  
+   Moves an element:
+   ```css
+   transform: translate(50px, 20px);
+   ```
+
+2. **`rotate(angle)`**  
+   Rotates an element:
+   ```css
+   transform: rotate(45deg);
+   ```
+
+3. **`scale(x, y)`**  
+   Scales an element:
+   ```css
+   transform: scale(1.5, 2);
+   ```
+
+4. **`skew(x-angle, y-angle)`**  
+   Skews an element:
+   ```css
+   transform: skew(30deg, 10deg);
+   ```
+
+5. **`matrix(a, b, c, d, e, f)`**  
+   Applies a matrix transformation for complex changes:
+   ```css
+   transform: matrix(1, 0, 0, 1, 50, 100);
+   ```
+</Collapse>
+### Example: Combining transformations
+Here's an enhanced and refined example, making use of smooth animations, better styling, and a more interactive feel:
+
+### HTML:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced CSS Transform Example</title>
+  <style>
+    /* Basic styling for the page */
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ecf0f1;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Box styling */
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #e74c3c;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+      cursor: pointer;
+    }
+
+    /* Hover effect */
+    .box:hover {
+      transform: translate(120px, 60px) rotate(45deg) scale(1.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      background-color: #f39c12;
+    }
+    
+    /* Adding text inside the box */
+    .box span {
+      display: block;
+      text-align: center;
+      line-height: 200px; /* Center the text vertically */
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.4s ease;
+    }
+
+    /* Adding a subtle text animation on hover */
+    .box:hover span {
+      transform: rotate(-45deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <span>Hover me</span>
+  </div>
+
+</body>
+</html>
+```
+
+### Key Features:
+1. **Centered Content**: The `.box` is placed in the center of the page using flexbox.
+2. **Smooth Transition**: The `transform`, `box-shadow`, and `background-color` properties are animated with `transition` to create a smooth, visually engaging effect.
+3. **Hover Effects**:
+   - **`transform`**: The box moves (using `translate`), rotates (using `rotate`), and scales (using `scale`) simultaneously.
+   - **`box-shadow`**: A more pronounced shadow is applied to make the box appear lifted when hovered.
+   - **`background-color`**: The box changes color to a warm yellow-orange on hover.
+4. **Text Animation**: The text inside the box (`<span>`) rotates in the opposite direction to the box when hovered, adding an extra touch of interactivity.
+
+<LinkCard
+    desc="Click here to see the HTML code for this example"
+    url="/files/web/web4.html"
+      />
+### Result:
+When you hover over the `.box`, the following happens:
+- The box moves, rotates, and scales.
+- The box’s shadow intensifies and the background color changes.
+- The text inside the box rotates in the opposite direction, creating an engaging dynamic effect.
+
+This example maximizes the potential of `transform` and `transition` properties to create a smooth and visually appealing interaction.

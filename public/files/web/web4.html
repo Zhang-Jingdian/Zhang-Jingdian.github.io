@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced CSS Transform Example</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ecf0f1;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Box styling */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #e74c3c;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Hover effect */
+        .box:hover {
+            transform: translate(120px, 60px) rotate(45deg) scale(1.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background-color: #f39c12;
+        }
+
+        /* Adding text inside the box */
+        .box span {
+            display: block;
+            text-align: center;
+            line-height: 200px;
+            /* Center the text vertically */
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.4s ease;
+        }
+
+        /* Adding a subtle text animation on hover */
+        .box:hover span {
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <span>Hover me</span>
+    </div>
+
+</body>
+
+</html>
