@@ -1,0 +1,121 @@
+---
+title: Binary Search
+description: Binary Search is a searching algorithm that finds the position of a target value within a sorted array.
+pubDate: 11 20 2024
+image: /image/algorithm/algorithm1.webp
+categories:
+  - Algorithm
+tags:
+  - Binary Search
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+### **Binary Search Summary**
+
+Binary Search is a classic algorithmic technique commonly used to find a target value within a sorted range or to solve optimization problems where the solution space has a monotonic property.
+
+---
+
+### **Use Cases**  
+1. **Search Problems**: Finding a target value or a specific range in a sorted array or data structure.  
+2. **Optimization Problems**: Finding the best solution to a problem (e.g., the smallest/largest value) where the conditions exhibit monotonic behavior.  
+
+---
+
+### **Core Concepts**  
+1. **Define the Range**: Start with a lower bound (`low`) and an upper bound (`high`).  
+2. **Calculate Midpoint**: Use `mid = low + (high - low) // 2` to avoid integer overflow.  
+3. **Branch Decisions**:  
+   - Check if the midpoint satisfies the condition.
+   - Adjust the bounds: `low = mid + 1` or `high = mid - 1`.  
+4. **Exit Condition**: Stop when the range collapses to a single value (or is empty, depending on the problem).  
+
+---
+
+### **Common Binary Search Templates**
+
+#### **Template 1: Standard Binary Search (Finding a Target Value)**
+```python
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = low + (high - low) // 2
+        if arr[mid] == target:
+            return mid  # Target found
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1  # Target not found
+```
+
+---
+
+#### **Template 2: Binary Search for Conditions (First/Last Satisfying Element)**
+This is used when you want to find the **first** or **last** element that satisfies a condition.  
+```python
+def binary_search_condition(arr, condition):
+    low, high = 0, len(arr) - 1
+    while low < high:  # Note: '<' instead of '<='
+        mid = low + (high - low) // 2
+        if condition(arr[mid]):
+            high = mid  # Condition met, move the upper bound
+        else:
+            low = mid + 1  # Condition not met, move the lower bound
+    return low  # At this point, low == high
+```
+
+---
+
+#### **Template 3: Floating Point Binary Search (Precision Control)**  
+Used for problems like approximating square roots, maximizing/minimizing a function, etc.  
+```python
+def binary_search_float(f, target, precision=1e-6):
+    low, high = 0, target
+    while high - low > precision:
+        mid = (low + high) / 2
+        if f(mid) < target:
+            low = mid
+        else:
+            high = mid
+    return (low + high) / 2
+```
+
+---
+
+### **Common Problem Types**
+1. **Search Problems**:  
+   - Find a target in a sorted array.
+   - Find the insertion position of a value in a sorted array.
+2. **Optimization Problems**:  
+   - Minimize or maximize resource allocation.
+   - Find the smallest or largest value satisfying a condition.
+3. **Variants**:  
+   - Search in a rotated sorted array.
+   - Search for a target in a 2D matrix.
+
+---
+
+### **Key Points to Remember**
+1. **Boundary Management**: Pay attention to open/closed intervals (`[low, high]` vs. `[low, high)`).
+2. **Integer Overflow**: Use `mid = low + (high - low) // 2` to avoid potential overflow issues.
+3. **Precision Control**: Ensure the desired precision is achieved when dealing with floating-point problems.
+4. **Monotonicity**: Binary Search requires the problem to exhibit monotonic properties (e.g., increasing/decreasing order or condition changes).  
+
+---
+
+### **Examples**
+1. Searching for `5` in a sorted array `[1, 3, 5, 7, 9]`.  
+2. Finding the minimum time required to complete a task with limited resources.  
+3. Approximating the square root of a number to a given precision.  
+
+Binary Search is efficient and versatile, making it an essential tool for solving many algorithmic problems.
