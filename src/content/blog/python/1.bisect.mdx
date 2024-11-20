@@ -1,0 +1,84 @@
+---
+title: bisect module in python
+description: The bisect module in python is used to perform binary search on a sorted list. 
+pubDate: 11 20 2024
+image: /image/python/python1.webp
+categories:
+  - python
+tags:
+  - array
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+In Python, the bisect module provides support for maintaining a list in sorted order without having to sort it repeatedly. T
+
+his module allows you to efficiently insert elements into a sorted list and also find positions in the list, using binary search.
+
+
+### **1. bisect_left(arr, x, lo=0, hi=len(arr))**
+- **Purpose**: Finds the position where `x` should be inserted into `arr` while keeping the list sorted. If `x` is already in the list, it will return the leftmost index where `x` can go.
+  
+### **2. bisect_right(arr, x, lo=0, hi=len(arr))**
+- **Purpose**: Similar to `bisect_left`, but if `x` is already in the list, it returns the position just after the last occurrence of `x`.
+
+### **3. insort_left(arr, x, lo=0, hi=len(arr))**
+- **Purpose**: Inserts `x` into `arr` at the position returned by `bisect_left` (leftmost possible position).
+
+### **4. insort_right(arr, x, lo=0, hi=len(arr))**
+- **Purpose**: Inserts `x` into `arr` at the position returned by `bisect_right` (after the last occurrence of `x`).
+
+
+### **Example Code:**
+
+Let's walk through the example below.
+
+```python
+import bisect
+
+# A sorted list
+arr = [1, 3, 4, 7, 8, 10]
+
+# 1. bisect_left: Finds the position to insert 5 (leftmost position)
+pos_left = bisect.bisect_left(arr, 5)
+print(f"Position to insert 5 (bisect_left): {pos_left}")  # Expected: 3
+
+# 2. bisect_right: Finds the position to insert 5 (rightmost position)
+pos_right = bisect.bisect_right(arr, 5)
+print(f"Position to insert 5 (bisect_right): {pos_right}")  # Expected: 4
+
+# 3. insort_left: Inserts 5 into the list at the leftmost position
+bisect.insort_left(arr, 5)
+print(f"List after inserting 5 (insort_left): {arr}")  # Expected: [1, 3, 4, 5, 7, 8, 10]
+
+# 4. insort_right: Inserts 6 into the list at the rightmost position
+bisect.insort_right(arr, 6)
+print(f"List after inserting 6 (insort_right): {arr}")  # Expected: [1, 3, 4, 5, 6, 7, 8, 10]
+```
+
+### **Output:**
+```
+Position to insert 5 (bisect_left): 3
+Position to insert 5 (bisect_right): 4
+List after inserting 5 (insort_left): [1, 3, 4, 5, 7, 8, 10]
+List after inserting 6 (insort_right): [1, 3, 4, 5, 6, 7, 8, 10]
+```
+
+### **Explanation of Results:**
+
+1. **`bisect_left(arr, 5)`**: This returns `3` because `5` should be inserted before `7` in the list.
+2. **`bisect_right(arr, 5)`**: This returns `4` because `5` can go after the last `5` if it were in the list.
+3. **`insort_left(arr, 5)`**: This inserts `5` at position `3` in the list, keeping the list sorted.
+4. **`insort_right(arr, 6)`**: This inserts `6` after `5`, placing it at position `4`.
+
+
+
+

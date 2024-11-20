@@ -1,0 +1,159 @@
+---
+title: javascript-base
+description: javascript base knowledge and usage in web development. 
+pubDate: 11 20 2024
+image: /image/web/web7.webp
+categories:
+  - web
+tags:
+  - javascript
+  - array
+---
+
+import Collapse from "../../../components/blog/collapse.astro";
+import Diff from "../../../components/blog/diff.astro";
+import Error from "../../../components/blog/error.astro";
+import Info from "../../../components/blog/info.astro";
+import Kbd from "../../../components/blog/kbd.astro";
+import Success from "../../../components/blog/success.astro";
+import Warning from "../../../components/blog/warning.astro";
+import TimeLine from "../../../components/page/TimeLine.astro";
+import LinkCard from "../../../components/page/LinkCard.astro";
+
+## Array
+
+### 1. **`push()`**
+   - **Purpose**: Adds one or more elements to the end of an array.
+   - **Returns**: The new length of the array.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     arr.push(4); // arr = [1, 2, 3, 4]
+     ```
+
+### 2. **`pop()`**
+   - **Purpose**: Removes the last element from an array and returns it.
+   - **Returns**: The removed element.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     let last = arr.pop(); // arr = [1, 2], last = 3
+     ```
+
+### 3. **`shift()`**
+   - **Purpose**: Removes the first element from an array and returns it.
+   - **Returns**: The removed element.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     let first = arr.shift(); // arr = [2, 3], first = 1
+     ```
+
+### 4. **`unshift()`**
+   - **Purpose**: Adds one or more elements to the beginning of an array.
+   - **Returns**: The new length of the array.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     arr.unshift(0); // arr = [0, 1, 2, 3]
+     ```
+
+### 5. **`concat()`**
+   - **Purpose**: Merges two or more arrays into a new array.
+   - **Returns**: The new merged array.
+   - **Example**:
+     ```javascript
+     let arr1 = [1, 2];
+     let arr2 = [3, 4];
+     let arr3 = arr1.concat(arr2); // arr3 = [1, 2, 3, 4]
+     ```
+
+### 6. **`splice()`**
+   - **Purpose**: Adds or removes elements from an array at a specified position.
+   - **Returns**: A new array containing the deleted elements (if any).
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3, 4, 5];
+     let removed = arr.splice(2, 2, 'a', 'b'); // arr = [1, 2, 'a', 'b', 5], removed = [3, 4]
+     ```
+
+### 7. **`slice()`**
+   - **Purpose**: Returns a shallow copy of a portion of an array without modifying the original array.
+   - **Returns**: A new array containing the selected elements.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3, 4, 5];
+     let newArr = arr.slice(1, 4); // newArr = [2, 3, 4]
+     ```
+
+### 8. **`forEach()`**
+   - **Purpose**: Executes a given function on each element in the array.
+   - **Returns**: `undefined`; cannot break the loop early.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     arr.forEach(item => console.log(item)); // Outputs 1, 2, 3
+     ```
+
+### 9. **`map()`**
+   - **Purpose**: Creates a new array with the results of calling a provided function on every element in the array.
+   - **Returns**: A new array.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     let newArr = arr.map(item => item * 2); // newArr = [2, 4, 6]
+     ```
+
+### 10. **`filter()`**
+   - **Purpose**: Creates a new array with all elements that pass the test implemented by the provided function.
+   - **Returns**: A new array with the filtered elements.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3, 4, 5];
+     let evenArr = arr.filter(item => item % 2 === 0); // evenArr = [2, 4]
+     ```
+
+### 11. **`reduce()`**
+   - **Purpose**: Applies a function to each element (from left to right) to reduce the array to a single value.
+   - **Returns**: The final value.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3, 4];
+     let sum = arr.reduce((acc, curr) => acc + curr, 0); // sum = 10
+     ```
+
+### 12. **`find()`**
+   - **Purpose**: Returns the first element in the array that satisfies the provided testing function.
+   - **Returns**: The first matching element, or `undefined` if no match is found.
+   - **Example**:
+     ```javascript
+     let arr = [5, 12, 8, 130, 44];
+     let found = arr.find(item => item > 10); // found = 12
+     ```
+
+### 13. **`indexOf()`**
+   - **Purpose**: Returns the index of the first occurrence of a specified element in the array, or `-1` if not found.
+   - **Returns**: The index of the element or `-1`.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     let index = arr.indexOf(2); // index = 1
+     ```
+
+### 14. **`includes()`**
+   - **Purpose**: Checks if a specified element exists in the array.
+   - **Returns**: `true` if the element is found, `false` otherwise.
+   - **Example**:
+     ```javascript
+     let arr = [1, 2, 3];
+     let isPresent = arr.includes(2); // isPresent = true
+     ```
+
+### 15. **`sort()`**
+   - **Purpose**: Sorts the elements of an array in place.
+   - **Returns**: The sorted array.
+   - **Example**:
+     ```javascript
+     let arr = [5, 2, 8, 1];
+     arr.sort((a, b) => a - b); // arr = [1, 2, 5, 8]
+     ```
