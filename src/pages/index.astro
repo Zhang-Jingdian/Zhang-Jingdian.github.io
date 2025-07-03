@@ -1,16 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer.vue";
 import HeroSection from "../components/HeroSection.vue";
-import Dock from "../components/dock.vue";
 ---
 
 <Layout title="我的个人博客 - 现代化技术栈">
-	<Header />
 	<main>
 		<HeroSection client:load />
 	</main>
 	<Footer />
-	<Dock client:load />
 </Layout>
