@@ -76,6 +76,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Bear Blog 变量 */
+  --blog-accent: #2337ff;
+  --blog-accent-dark: #000d8a;
+  --blog-black: 15, 18, 25;
+  --blog-gray: 96, 115, 159;
+  --blog-gray-light: 229, 233, 240;
+  --blog-gray-dark: 34, 41, 57;
+  --blog-gray-gradient: rgba(var(--blog-gray-light), 50%), #fff;
+  --blog-box-shadow: 0 2px 6px rgba(var(--blog-gray), 25%),
+    0 8px 24px rgba(var(--blog-gray), 33%),
+    0 16px 32px rgba(var(--blog-gray), 33%);
 }
 
 .dark {
@@ -111,6 +123,92 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+}
+
+@font-face {
+  font-family: 'Atkinson';
+  src: url('/fonts/atkinson-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson';
+  src: url('/fonts/atkinson-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 博客特定样式 */
+.blog-content {
+  @apply max-w-[720px] mx-auto px-4 py-12;
+  font-family: 'Atkinson', sans-serif;
+
+  /* 继承 Bear Blog 的排版样式 */
+  h1 {
+    @apply text-[3.052em] leading-tight mb-2;
+  }
+
+  h2 {
+    @apply text-[2.441em] leading-tight mb-2;
+  }
+
+  h3 {
+    @apply text-[1.953em] leading-tight mb-2;
+  }
+
+  h4 {
+    @apply text-[1.563em] leading-tight mb-2;
+  }
+
+  h5 {
+    @apply text-[1.25em] leading-tight mb-2;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  .prose p {
+    @apply mb-8;
+  }
+
+  img {
+    @apply max-w-full h-auto rounded-lg;
+  }
+
+  code {
+    @apply px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800;
+  }
+
+  pre {
+    @apply p-6 rounded-lg;
+
+    code {
+      @apply bg-transparent p-0;
+    }
+  }
+
+  blockquote {
+    @apply pl-5 border-l-4 border-[var(--blog-accent)] text-[1.333em];
+  }
+}
+
+/* 无障碍支持 */
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 @layer base {
