@@ -1,0 +1,32 @@
+---
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="使用 Astro + Vue3 + TailwindCSS v4 + Inspira 组件库的个人博客"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body
+        class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900"
+    >
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    @import "../styles/global.css";
+</style>
+
