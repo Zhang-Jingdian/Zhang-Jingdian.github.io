@@ -5,19 +5,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
+import { formatDate as formatDateUtil } from "../lib/utils";
 
 interface Props {
-  date: Date
+    date: Date;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
-const formattedDate = computed(() => 
-  props.date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
-)
+const formattedDate = computed(() =>
+    formatDateUtil(props.date, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    }),
+);
 </script> 

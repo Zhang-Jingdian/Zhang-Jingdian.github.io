@@ -105,22 +105,27 @@ import {
     TECH_STACK_TITLE,
     TECH_STACK_ITEMS,
     BLOG_PREVIEW_TITLE,
-    FEATURED_POSTS as featuredPosts,
     READ_MORE_TEXT,
     VIEW_ALL_POSTS_TEXT,
     PATH_ABOUT,
     PATH_BLOG,
 } from "../consts";
+import { formatDate } from '../lib/utils';
 
-// 格式化日期
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+interface Post {
+    id: string;
+    title: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+    slug: string;
 }
+
+interface Props {
+    featuredPosts: Post[];
+}
+
+defineProps<Props>();
 
 // 页面跳转函数
 const scrollToBlog = () => {
