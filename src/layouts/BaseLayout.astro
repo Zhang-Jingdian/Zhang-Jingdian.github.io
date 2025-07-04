@@ -7,8 +7,9 @@ export interface Props {
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 
-import Dock from "../components/dock.vue";
-import { SITE_LANG } from "../consts";
+import Dock from "@/components/Dock.vue";
+import { SITE_LANG } from "@/consts";
+import BackGround from "@/components/BackGround.vue";
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ import { SITE_LANG } from "../consts";
         <title>{title}</title>
     </head>
     <body>
+        <BackGround />
         <main>
             <slot />
         </main>
@@ -31,8 +33,4 @@ import { SITE_LANG } from "../consts";
 
 <style is:global>
     @import "../styles/global.css";
-
-    main {
-        padding-top: 4rem; /* to offset fixed header */
-    }
 </style>

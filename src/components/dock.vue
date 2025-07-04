@@ -59,7 +59,7 @@ import {
 import { Icon } from "@iconify/vue";
 import HeaderLink from "./HeaderLink.vue";
 import ThemeToggle from './ThemeToggle.vue';
-import { DOCK_LINKS, SOCIAL_LINKS } from "../consts";
+import { DOCK_LINKS, SOCIAL_LINKS } from "@/consts";
 
 const themeToggleRef = ref<InstanceType<typeof ThemeToggle> | null>(null);
 
