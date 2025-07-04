@@ -4,15 +4,12 @@
     <div class="text-center space-y-8 mb-16">
       <div class="space-y-4">
         <h1 class="text-6xl md:text-8xl font-bold text-white leading-tight">
-          我的
+          {{ HERO_TITLE }}
           <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-            博客世界
+            {{ HERO_TITLE_SPAN }}
           </span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          分享技术见解、生活感悟与创作灵感 ✨<br />
-          基于现代化技术栈构建的个人博客空间
-        </p>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" v-html="HERO_SUBTITLE"></p>
       </div>
 
       <!-- CTA 按钮区域 -->
@@ -20,7 +17,7 @@
         <GradientButton 
           class="text-white font-medium text-lg px-8 py-3"
           @click="scrollToBlog">
-          📖 开始阅读
+          {{ HERO_CTA_PRIMARY_TEXT }}
         </GradientButton>
         
         <GradientButton 
@@ -28,7 +25,7 @@
           :duration="2000"
           class="text-white font-medium text-lg px-8 py-3"
           @click="goToAbout">
-          👋 关于我
+          {{ HERO_CTA_SECONDARY_TEXT }}
         </GradientButton>
       </div>
     </div>
@@ -36,11 +33,11 @@
     <!-- 技术栈展示 -->
     <div class="w-full max-w-6xl">
       <h2 class="text-2xl font-bold text-white text-center mb-8">
-        🛠️ 技术栈
+        {{ TECH_STACK_TITLE }}
       </h2>
       <div class="flex flex-wrap justify-center gap-4">
         <div 
-          v-for="tech in techStack" 
+          v-for="tech in TECH_STACK_ITEMS" 
           :key="tech.name" 
           class="group px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer transform hover:scale-105"
         >
@@ -55,7 +52,7 @@
     <!-- 博客预览区域 -->
     <div class="w-full max-w-6xl mt-20" id="blog-preview">
       <h2 class="text-3xl font-bold text-white text-center mb-12">
-        📝 最新文章
+        {{ BLOG_PREVIEW_TITLE }}
       </h2>
       <div class="grid md:grid-cols-3 gap-8">
         <article 
@@ -77,7 +74,7 @@
                 :duration="3000"
                 :border-width="1"
                 class="text-white text-sm px-4 py-2">
-                阅读更多 →
+                {{ READ_MORE_TEXT }}
               </GradientButton>
             </div>
           </div>
@@ -90,7 +87,7 @@
           :colors="['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4']"
           class="text-white font-medium text-lg px-8 py-3"
           @click="goToBlogList">
-          📚 查看所有文章
+          {{ VIEW_ALL_POSTS_TEXT }}
         </GradientButton>
       </div>
     </div>
@@ -99,42 +96,21 @@
 
 <script setup lang="ts">
 import { GradientButton } from '@/components/ui/gradient-button'
-
-const techStack = [
-  { name: 'Astro', icon: '🚀' },
-  { name: 'Vue 3', icon: '💚' },
-  { name: 'TypeScript', icon: '📘' },
-  { name: 'TailwindCSS v4', icon: '🎨' },
-  { name: 'Inspira UI', icon: '✨' },
-  { name: 'shadcn-vue', icon: '🔧' }
-]
-
-const featuredPosts = [
-  {
-    id: 'using-mdx',
-    title: 'Using MDX',
-    excerpt: 'MDX是一种特殊的Markdown格式，支持嵌入式JavaScript和JSX语法。这解锁了将JavaScript和UI组件混合到Markdown内容中的能力...',
-    date: '2024-06-01',
-    readTime: '5 分钟阅读',
-    slug: 'using-mdx'
-  },
-  {
-    id: 'markdown-style-guide',
-    title: 'Markdown Style Guide',
-    excerpt: '这里有一些基本的Markdown语法示例，可以在Astro中编写Markdown内容时使用。包括标题、段落、图片、代码块等各种元素的使用方法...',
-    date: '2024-06-19',
-    readTime: '8 分钟阅读',
-    slug: 'markdown-style-guide'
-  },
-  {
-    id: 'third-post',
-    title: 'Third post',
-    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-    date: '2022-07-22',
-    readTime: '6 分钟阅读',
-    slug: 'third-post'
-  }
-]
+import {
+    HERO_TITLE,
+    HERO_TITLE_SPAN,
+    HERO_SUBTITLE,
+    HERO_CTA_PRIMARY_TEXT,
+    HERO_CTA_SECONDARY_TEXT,
+    TECH_STACK_TITLE,
+    TECH_STACK_ITEMS,
+    BLOG_PREVIEW_TITLE,
+    FEATURED_POSTS as featuredPosts,
+    READ_MORE_TEXT,
+    VIEW_ALL_POSTS_TEXT,
+    PATH_ABOUT,
+    PATH_BLOG,
+} from "../consts";
 
 // 格式化日期
 const formatDate = (dateString: string) => {
@@ -157,19 +133,19 @@ const scrollToBlog = () => {
 
 const goToAbout = () => {
   if (typeof window !== 'undefined') {
-    window.location.href = '/about'
+    window.location.href = PATH_ABOUT
   }
 }
 
 const goToBlogList = () => {
   if (typeof window !== 'undefined') {
-    window.location.href = '/blog'
+    window.location.href = PATH_BLOG
   }
 }
 
 const goToPost = (slug: string) => {
   if (typeof window !== 'undefined') {
-    window.location.href = `/blog/${slug}`
+    window.location.href = `${PATH_BLOG}/${slug}`
   }
 }
 </script> 

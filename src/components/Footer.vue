@@ -1,18 +1,15 @@
 <template>
   <footer>
-    &copy; {{ currentYear }} Your name here. All rights reserved.
+    &copy; {{ currentYear }} {{ AUTHOR_NAME }}. {{ COPYRIGHT_TEXT }}
     <div class="social-links">
-      <a href="https://m.webtoo.ls/@astro" target="_blank">
-        <span class="sr-only">Follow Astro on Mastodon</span>
-        <Icon icon="mdi:mastodon" class="size-8" />
-      </a>
-      <a href="https://twitter.com/astrodotbuild" target="_blank">
-        <span class="sr-only">Follow Astro on Twitter</span>
-        <Icon icon="mdi:twitter" class="size-8" />
-      </a>
-      <a href="https://github.com/withastro/astro" target="_blank">
-        <span class="sr-only">Go to Astro's GitHub repo</span>
-        <Icon icon="mdi:github" class="size-8" />
+      <a
+        v-for="link in SOCIAL_LINKS"
+        :key="link.name"
+        :href="link.url"
+        target="_blank"
+      >
+        <span class="sr-only">{{ link.srText }}</span>
+        <Icon :icon="link.icon" class="size-8" />
       </a>
     </div>
   </footer>
@@ -21,6 +18,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
+import {
+    AUTHOR_NAME,
+    COPYRIGHT_TEXT,
+    SOCIAL_LINKS,
+} from "../consts";
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>

@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.vue";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, PATH_BLOG } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.vue";
 import { Image } from "astro:assets";
@@ -18,7 +18,7 @@ const posts = (await getCollection("blog")).sort(
 				{
 					posts.map((post) => (
 						<li>
-							<a href={`/blog/${post.id}/`}>
+							<a href={`${PATH_BLOG}/${post.id}/`}>
 								{post.data.heroImage && (
 									<Image
 										width={720}

@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.vue";
 import HeroSection from "../components/HeroSection.vue";
+import { SITE_TITLE, SITE_TAGLINE } from "../consts";
 ---
 
-<Layout title="我的个人博客 - 现代化技术栈">
+<Layout title={`${SITE_TITLE} - ${SITE_TAGLINE}`}>
 	<main>
 		<HeroSection client:load />
 	</main>

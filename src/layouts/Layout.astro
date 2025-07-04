@@ -6,16 +6,14 @@ export interface Props {
 const { title } = Astro.props;
 
 import Dock from "../components/dock.vue";
+import { SITE_DESCRIPTION, SITE_LANG } from "../consts";
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={SITE_LANG}>
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content="使用 Astro + Vue3 + TailwindCSS v4 + Inspira 组件库的个人博客"
-        />
+        <meta name="description" content={SITE_DESCRIPTION} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
