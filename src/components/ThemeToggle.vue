@@ -1,39 +1,49 @@
 <template>
-    <button @click="toggleTheme" class="theme-toggle" aria-label="切换主题">
-        <Icon :icon="isDark ? 'mdi:weather-night' : 'mdi:weather-sunny'" class="size-full" />
-    </button>
+    <Icon :icon="isDark ? THEME_ICON_DARK : THEME_ICON_LIGHT" class="size-full" />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
+import { THEME_ICON_LIGHT, THEME_ICON_DARK } from '../consts';
 
 const isDark = ref(false);
 
 const applyTheme = (theme: 'dark' | 'light') => {
-    if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        isDark.value = true;
-    } else {
-        document.documentElement.classList.remove('dark');
-        isDark.value = false;
+    if (typeof document !== 'undefined') {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            isDark.value = true;
+        } else {
+            document.documentElement.classList.remove('dark');
+            isDark.value = false;
+        }
     }
 };
 
 const toggleTheme = () => {
     const newTheme = isDark.value ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme);
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', newTheme);
+    }
     applyTheme(newTheme);
 };
 
 onMounted(() => {
-    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
+    if (typeof window !== 'undefined') {
+        const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(prefersDark ? 'dark' : 'light');
+        }
     }
+});
+
+// Expose the toggleTheme function to be used by the parent component
+defineExpose({
+    toggleTheme
 });
 </script>
 

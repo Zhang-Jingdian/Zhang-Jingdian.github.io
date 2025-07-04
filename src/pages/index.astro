@@ -1,26 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroSection from "../components/HeroSection.vue";
 import { SITE_TITLE, SITE_TAGLINE } from "../consts";
-import { getCollection } from "astro:content";
-
-// 获取所有博客文章，并按发布日期降序排序
-const posts = (await getCollection("blog")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-// 提取最新的三篇文章作为精选文章，并整理成 HeroSection 组件所需的数据格式
-const featuredPosts = posts.slice(0, 3).map((post) => ({
-	id: post.id,
-	slug: post.id, // 使用 post.id 替代 slug 来解决类型问题
-	title: post.data.title,
-	excerpt: post.data.description, // 使用 description 作为 excerpt
-	date: post.data.pubDate.toISOString(),
-	// 根据正文长度估算阅读时间（假设每分钟阅读 300 个字符）
-	readTime: `${Math.ceil((post.body || "").length / 300)} 分钟阅读`,
-}));
 ---
 
-<BaseLayout title={`${SITE_TITLE} - ${SITE_TAGLINE}`}>
-	<HeroSection client:load featuredPosts={featuredPosts} />
-</BaseLayout>
+<BaseLayout title={`${SITE_TITLE} - ${SITE_TAGLINE}`}> test </BaseLayout>

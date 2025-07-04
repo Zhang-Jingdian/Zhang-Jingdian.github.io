@@ -7,8 +7,6 @@ export interface Props {
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
 import Dock from "../components/dock.vue";
 import { SITE_LANG } from "../consts";
 ---
@@ -24,11 +22,9 @@ import { SITE_LANG } from "../consts";
         <title>{title}</title>
     </head>
     <body>
-        <Header client:load />
         <main>
             <slot />
         </main>
-        <Footer />
         <Dock client:load />
     </body>
 </html>

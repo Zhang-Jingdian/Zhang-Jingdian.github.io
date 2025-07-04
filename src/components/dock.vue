@@ -1,46 +1,68 @@
 <template>
-    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <Dock direction="bottom">
-            <!-- 内部导航链接 -->
-            <HeaderLink v-for="link in DOCK_LINKS" :key="link.to" :to="link.to">
-                <DockIcon>
-                    <Icon :icon="link.icon" class="size-full" />
-                    <span class="sr-only">{{ link.label }}</span>
-                </DockIcon>
-            </HeaderLink>
-
-            <DockSeparator />
-
-            <!-- 社交媒体链接 -->
-            <a
-                v-for="link in SOCIAL_LINKS"
-                :key="link.name"
-                :href="link.url"
-                target="_blank"
-                rel="noopener"
+    <div
+        class="fixed inset-x-0 bottom-4 z-50"
+        style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        "
+    >
+        <div style="pointer-events: auto">
+            <Dock
+                class="bg-background/80 text-foreground backdrop-blur-md"
+                direction="bottom"
             >
-                <DockIcon>
-                    <Icon :icon="link.icon" class="size-full" />
-                    <span class="sr-only">{{ link.name }}</span>
+                <!-- 内部导航链接 -->
+                <HeaderLink v-for="link in DOCK_LINKS" :key="link.to" :to="link.to">
+                    <DockIcon :tooltip="link.label">
+                        <Icon :icon="link.icon" class="size-full" />
+                    </DockIcon>
+                </HeaderLink>
+
+                <DockSeparator />
+
+                <!-- 社交媒体链接 -->
+                <a
+                    v-for="link in SOCIAL_LINKS"
+                    :key="link.name"
+                    :href="link.url"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <DockIcon :tooltip="link.srText">
+                        <Icon :icon="link.icon" class="size-full" />
+                    </DockIcon>
+                </a>
+
+                <DockSeparator />
+
+                <!-- 主题切换按钮 -->
+                <DockIcon
+                    tooltip="切换主题"
+                    @click="themeToggleRef?.toggleTheme()"
+                >
+                    <ThemeToggle ref="themeToggleRef"/>
                 </DockIcon>
-            </a>
-
-            <DockSeparator />
-
-            <!-- 主题切换按钮 -->
-            <DockIcon>
-                <ThemeToggle />
-            </DockIcon>
-        </Dock>
+            </Dock>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { Dock, DockIcon, DockSeparator } from "@/components/ui/dock";
+import { ref } from 'vue';
+import {
+    Dock,
+    DockIcon,
+    DockSeparator,
+} from "@/components/ui/dock/index";
 import { Icon } from "@iconify/vue";
 import HeaderLink from "./HeaderLink.vue";
-import ThemeToggle from "./ThemeToggle.vue";
+import ThemeToggle from './ThemeToggle.vue';
 import { DOCK_LINKS, SOCIAL_LINKS } from "../consts";
+
+const themeToggleRef = ref<InstanceType<typeof ThemeToggle> | null>(null);
+
 </script>
 
 <style scoped>
