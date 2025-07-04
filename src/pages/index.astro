@@ -1,6 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Footer from "../components/Footer.vue";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/HeroSection.vue";
 import { SITE_TITLE, SITE_TAGLINE } from "../consts";
 import { getCollection } from "astro:content";
@@ -22,9 +21,6 @@ const featuredPosts = posts.slice(0, 3).map((post) => ({
 }));
 ---
 
-<Layout title={`${SITE_TITLE} - ${SITE_TAGLINE}`}>
-	<main>
-		<HeroSection client:load featuredPosts={featuredPosts} />
-	</main>
-	<Footer />
-</Layout>
+<BaseLayout title={`${SITE_TITLE} - ${SITE_TAGLINE}`}>
+	<HeroSection client:load featuredPosts={featuredPosts} />
+</BaseLayout>
