@@ -24,6 +24,13 @@
                     <span class="sr-only">{{ link.name }}</span>
                 </DockIcon>
             </a>
+
+            <DockSeparator />
+
+            <!-- 主题切换按钮 -->
+            <DockIcon>
+                <ThemeToggle />
+            </DockIcon>
         </Dock>
     </div>
 </template>
@@ -32,6 +39,7 @@
 import { Dock, DockIcon, DockSeparator } from "@/components/ui/dock";
 import { Icon } from "@iconify/vue";
 import HeaderLink from "./HeaderLink.vue";
+import ThemeToggle from "./ThemeToggle.vue";
 import { DOCK_LINKS, SOCIAL_LINKS } from "../consts";
 </script>
 

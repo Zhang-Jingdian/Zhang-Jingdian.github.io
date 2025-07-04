@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://zhang-jingdian-github-io.vercel.app/', // 开发环境 URL，部署时需要改为你的实际网站 URL
+  site: 'https://zhang-jingdian-github-io.vercel.app/',
   integrations: [vue(), mdx(), sitemap()],
 
   vite: {

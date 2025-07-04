@@ -47,7 +47,7 @@ export const VIEW_ALL_POSTS_TEXT = "📚 查看所有文章";
 // Paths
 export const PATH_HOME = "/";
 export const PATH_BLOG = "/blog";
-export const PATH_PROJECT = "/project";
+export const PATH_ABOUT = "/about";
 
 // Dock
 export const DOCK_LINKS = [
@@ -62,8 +62,11 @@ export const DOCK_LINKS = [
         icon: "fluent-emoji:writing-hand-medium-light",
     },
     {
-        to: PATH_PROJECT,
-        label: "project",
+        to: PATH_ABOUT,
+        label: "关于",
         icon: "fluent-emoji:rocket",
     },
 ];
+
+// BlogPost Layout
+export const LAST_UPDATED_ON_TEXT = "最后更新于";
