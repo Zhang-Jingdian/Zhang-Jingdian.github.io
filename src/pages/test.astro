@@ -1,8 +1,10 @@
 ---
+import Marquee from "@/components/Marquee.vue";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SvgMask from "@/components/SvgMask.vue";
 ---
 
-<BaseLayout title="首页" description="首页">
+<BaseLayout title="测试" description="测试">
     <SvgMask client:only />
+    <Marquee client:only />
 </BaseLayout>

@@ -10,6 +10,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 import Dock from "@/components/Dock.vue";
 import { SITE_LANG } from "@/consts";
 import BackGround from "@/components/BackGround.vue";
+import SmoothCursor from "@/components/ui/smooth-cursor/SmoothCursor.vue";
 ---
 
 <!doctype html>
@@ -23,7 +24,8 @@ import BackGround from "@/components/BackGround.vue";
         <title>{title}</title>
     </head>
     <body>
-        <BackGround />
+        <SmoothCursor client:only />
+        <BackGround client:load />
         <main>
             <slot />
         </main>

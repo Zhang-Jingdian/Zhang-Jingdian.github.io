@@ -14,7 +14,7 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const formattedDate = computed(() =>
+const formattedDate = computed(() => 
     formatDateUtil(props.date, {
         year: "numeric",
         month: "short",
