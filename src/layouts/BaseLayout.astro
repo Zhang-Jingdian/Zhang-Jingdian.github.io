@@ -7,7 +7,7 @@ export interface Props {
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 
-import { Dock } from "@/components/ui/dock";
+import Dock from "@/components/Dock.vue";
 import { SITE_LANG } from "@/consts";
 import BackGround from "@/components/BackGround.vue";
 import SmoothCursor from "@/components/ui/smooth-cursor/SmoothCursor.vue";
