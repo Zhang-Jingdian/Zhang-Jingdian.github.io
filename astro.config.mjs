@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { fileURLToPath, URL } from 'node:url';
 
 import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
@@ -12,6 +13,11 @@ export default defineConfig({
   integrations: [vue(), mdx(), sitemap()],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    }
   }
 });
