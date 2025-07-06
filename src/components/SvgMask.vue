@@ -8,7 +8,12 @@
       </template>
       <template #reveal>   
       <LinkPreview
-        url="https://tailwindcss.com"
+        url="https://github.com/Zhang-Jingdian"
+        :width="600"
+        :height="400"
+        :delay="0.2"
+        :duration="0.75"
+        :scale="1.2"
         class="font-bold"
       >
         <BlurReveal>

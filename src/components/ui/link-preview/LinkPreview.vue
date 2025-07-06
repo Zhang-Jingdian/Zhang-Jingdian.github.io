@@ -41,7 +41,7 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, computed, reactive, type CSSProperties } from "vue";
+  import { ref, computed, reactive, onMounted, type CSSProperties } from "vue";
   import { cn } from "@/lib/utils";
   
   interface BaseProps {
@@ -79,6 +79,35 @@
   const isLoading = ref(true);
   const preview = ref<HTMLElement | null>(null);
   const hasPopped = ref(false);
+  const isDark = ref(false);
+  
+  // 检测当前主题
+  const detectTheme = () => {
+    if (typeof document !== 'undefined') {
+      isDark.value = document.documentElement.classList.contains('dark');
+    }
+  };
+  
+  // 监听主题变化
+  const observeThemeChanges = () => {
+    if (typeof document !== 'undefined' && typeof MutationObserver !== 'undefined') {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            detectTheme();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      
+      return observer;
+    }
+    return null;
+  };
   
   // Generate preview URL
   const previewSrc = computed(() => {
@@ -89,7 +118,7 @@
       screenshot: "true",
       meta: "false",
       embed: "screenshot.url",
-      colorScheme: "light",
+      colorScheme: isDark.value ? "dark" : "light",
       "viewport.isMobile": "true",
       "viewport.deviceScaleFactor": "1",
       "viewport.width": String(props.width * 3),
@@ -161,6 +190,11 @@
   function handleImageLoad() {
     isLoading.value = false;
   }
+  
+  onMounted(() => {
+    detectTheme();
+    observeThemeChanges();
+  });
   </script>
   
   <style scoped>
