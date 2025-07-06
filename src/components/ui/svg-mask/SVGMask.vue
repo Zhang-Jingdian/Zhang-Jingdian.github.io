@@ -12,7 +12,7 @@
         }px`,
         transition: 'mask-size 0.2s ease-in-out',
       }"
-      class="absolute flex size-full items-center justify-center bg-black text-6xl text-white bg-grid-white/[0.2] [mask-image:url(./mask.svg)] [mask-repeat:no-repeat] [mask-size:40px]"
+      class="absolute flex size-full items-center justify-center bg-black text-6xl text-white bg-grid-white/[0.2] [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px]"
     >
       <div class="absolute inset-0 z-0 size-full bg-black opacity-50"></div>
       <div
@@ -25,7 +25,7 @@
     </div>
 
     <div class="flex size-full items-center justify-center text-white">
-      <slot name="reveal"></slot>
+        <slot name="reveal"></slot>
     </div>
   </div>
 </template>
