@@ -5,7 +5,7 @@
       <DockIcon v-for="link in DOCK_LINKS" :key="link.to">
         <a 
           :href="link.to" 
-          class="flex items-center justify-center w-full h-full text-white hover:text-blue-400 transition-colors"
+          class="flex items-center justify-center w-full h-full text-white transition-colors"
           :title="link.label"
         >
           <Icon :icon="link.icon" class="size-6" />
@@ -20,7 +20,7 @@
         <a 
           :href="social.url" 
           target="_blank"
-          class="flex items-center justify-center w-full h-full text-white hover:text-green-400 transition-colors"
+          class="flex items-center justify-center w-full h-full text-white transition-colors"
           :title="social.srText"
         >
           <Icon :icon="social.icon" class="size-6" />
@@ -34,7 +34,7 @@
       <DockIcon>
         <button 
           @click="toggleTheme"
-          class="flex items-center justify-center w-full h-full text-white hover:text-yellow-400 transition-colors"
+          class="flex items-center justify-center w-full h-full text-white transition-colors"
           :title="isDark ? '切换到亮色主题' : '切换到暗色主题'"
         >
           <Icon :icon="isDark ? THEME_ICON_DARK : THEME_ICON_LIGHT" class="size-6" />
