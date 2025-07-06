@@ -1,6 +1,10 @@
 <template>
   <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-    <DockComponent class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+    <DockComponent 
+      class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
+      :magnification="80"
+      :distance="200"
+    >
       <!-- 导航链接 -->
       <DockIcon v-for="link in DOCK_LINKS" :key="link.to">
         <a 
@@ -23,7 +27,7 @@
           class="flex items-center justify-center w-full h-full text-white transition-colors"
           :title="social.srText"
         >
-          <Icon :icon="social.icon" class="size-6" />
+          <Icon :icon="getGitHubIcon(social)" class="size-6" />
         </a>
       </DockIcon>
 
@@ -45,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { Dock as DockComponent, DockIcon, DockSeparator } from "@/components/ui/dock";
 import { Icon } from '@iconify/vue';
 import { 
@@ -56,6 +60,14 @@ import {
 } from "@/consts";
 
 const isDark = ref(false);
+
+// 根据主题返回正确的 GitHub 图标
+const getGitHubIcon = (social: typeof SOCIAL_LINKS[0]) => {
+  if (social.name === 'GitHub') {
+    return isDark.value ? 'mdi:github' : 'skill-icons:github-dark';
+  }
+  return social.icon;
+};
 
 const applyTheme = (theme: 'dark' | 'light') => {
   if (typeof document !== 'undefined') {
