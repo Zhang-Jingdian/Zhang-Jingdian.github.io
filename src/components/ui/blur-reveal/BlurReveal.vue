@@ -35,10 +35,10 @@
   }
   
   const props = withDefaults(defineProps<Props>(), {
-    duration: 1,
-    delay: 1,
-    blur: "20px",
-    yOffset: 20,
+    duration: 0.3,
+    delay: 0.1,
+    blur: "8px",
+    yOffset: 10,
   });
   
   const container = ref(null);
@@ -59,7 +59,7 @@
     return {
       opacity: 0,
       filter: `blur(${props.blur})`,
-      y: props.yOffset,
+      transform: `translate3d(0, ${props.yOffset}px, 0)`,
     };
   }
   
@@ -67,7 +67,7 @@
     return {
       opacity: 1,
       filter: `blur(0px)`,
-      y: 0,
+      transform: `translate3d(0, 0, 0)`,
     };
   }
   </script>

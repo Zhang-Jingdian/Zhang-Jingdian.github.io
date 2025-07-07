@@ -1,15 +1,15 @@
 <template>
     <div :class="cn('relative inline-block', props.class)">
       <!-- Trigger -->
-      <NuxtLink
-        :to="url"
+      <a
+        :href="url"
         :class="cn('text-black dark:text-white', props.linkClass)"
         @mousemove="handleMouseMove"
         @mouseenter="showPreview"
         @mouseleave="hidePreview"
       >
         <slot />
-      </NuxtLink>
+      </a>
   
       <!-- Preview -->
       <div
@@ -134,21 +134,21 @@
     y: 0,
   });
   
-  // Calculate preview position
+    // Calculate preview position
   const previewStyle = computed<CSSProperties>(() => {
-    if (!preview.value) return {};
-  
+    if (!preview.value || typeof window === 'undefined') return {};
+
     const offset = 20;
     const previewWidth = props.width;
     const previewHeight = props.height;
     const viewportWidth = window.innerWidth;
-  
+
     let x = mousePosition.x - previewWidth / 2;
     x = Math.min(Math.max(0, x), viewportWidth - previewWidth);
-  
+
     const linkRect = preview.value.parentElement?.getBoundingClientRect();
     const y = linkRect ? linkRect.top - previewHeight - offset : 0;
-  
+
     return {
       position: "fixed",
       left: `${x}px`,

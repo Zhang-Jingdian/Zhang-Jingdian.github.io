@@ -41,7 +41,7 @@ withDefaults(
   {
     pauseOnHover: false,
     vertical: false,
-    repeat: 4,
+    repeat: 2,
   },
 );
 </script>

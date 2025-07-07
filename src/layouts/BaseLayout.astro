@@ -22,14 +22,32 @@ import SmoothCursor from "@/components/ui/smooth-cursor/SmoothCursor.vue";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <!-- 预加载关键资源 -->
+        <link
+            rel="preload"
+            href="/fonts/atkinson-regular.woff"
+            as="font"
+            type="font/woff"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/atkinson-bold.woff"
+            as="font"
+            type="font/woff"
+            crossorigin
+        />
     </head>
     <body>
-        <SmoothCursor client:only />
-        <BackGround client:load />
+        <!-- 使用 client:only 避免 SSR 错误 -->
+        <!-- 暂时禁用 SmoothCursor 以优化性能 -->
+        <!-- <SmoothCursor client:only="vue" /> -->
+        <BackGround client:only="vue" />
         <main>
             <slot />
         </main>
-        <Dock client:load />
+        <!-- Dock 是关键导航，但也需要避免 SSR -->
+        <Dock client:only="vue" />
     </body>
 </html>
 

@@ -36,6 +36,8 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "postcss-import": "^16.1.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "terser": "^5.43.1",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
