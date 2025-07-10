@@ -6,6 +6,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { THEME_ICON_LIGHT, THEME_ICON_DARK } from '../consts';
+// import { useLoading } from '@/composables/useLoading';
 
 const isDark = ref(false);
 
@@ -49,6 +50,12 @@ const debouncedApplyTheme = debounce(applyTheme, 50);
 
 const toggleTheme = () => {
     const newTheme = isDark.value ? 'light' : 'dark';
+    
+    // 触发主题切换加载动画
+    const event = new CustomEvent('theme-change', { 
+        detail: { theme: newTheme } 
+    });
+    document.dispatchEvent(event);
     
     // 立即更新本地存储
     if (typeof window !== 'undefined') {

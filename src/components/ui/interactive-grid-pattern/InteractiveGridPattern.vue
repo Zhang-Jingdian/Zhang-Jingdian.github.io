@@ -55,13 +55,13 @@ function getY(index: number) {
 }
 
 const svgClass = computed(() =>
-  cn("absolute inset-0 h-full w-full border border-gray-400/30", props.className),
+  cn("absolute inset-0 h-full w-full min-h-full opacity-50", props.className),
 );
 
 function getRectClass(index: number) {
   return cn(
-    "stroke-gray-400/30 transition-all duration-100 ease-in-out [&:not(:hover)]:duration-1000",
-    hoveredSquare.value === index ? "fill-gray-300/30" : "fill-transparent",
+    "stroke-blue-500/20 fill-transparent transition-all duration-100 ease-in-out [&:not(:hover)]:duration-1000",
+    hoveredSquare.value === index ? "fill-blue-500/10 stroke-blue-500/40" : "",
     props.squaresClassName,
   );
 }

@@ -16,7 +16,7 @@
         :scale="1.2"
         class="font-bold"
       >
-          <a href="https://github.com/Zhang-Jingdian" class="text-3xl font-bold tracking-tighter xl:text-6xl/none sm:text-5xl hover:text-red-500 text-transparent transition-colors duration-300 cursor-pointer">欢迎👋 </a>
+          <a href="https://github.com/Zhang-Jingdian" class="text-3xl font-bold tracking-tighter xl:text-6xl/none sm:text-5xl ">欢迎👋 </a>
       </LinkPreview>
       </template>
     </SVGMask>
