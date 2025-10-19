@@ -1,0 +1,199 @@
+---
+// 导入博客布局组件
+import BlogLayout from "../../layouts/BlogLayout.astro";
+// 导入内容集合获取函数
+import { getCollection } from "astro:content";
+// 导入内容集合条目类型
+import type { CollectionEntry } from "astro:content";
+// 导入日期格式化组件
+import FormattedDate from "@/components/FormattedDate/FormattedDate.vue";
+// 导入 Astro 图片组件
+import { Image } from "astro:assets";
+
+/**
+ * 生成静态路径
+ * 在构建时为每篇博客文章生成对应的静态页面
+ */
+export async function getStaticPaths() {
+  // 获取所有博客文章
+  const posts = await getCollection("blog");
+
+  // 为每篇文章生成路径参数和 props
+  return posts.map((post: CollectionEntry<"blog">) => ({
+    params: { slug: post.id }, // URL 参数 (使用 id 而不是 slug)
+    props: { post } // 传递给页面的数据
+  }));
+}
+
+// 定义页面 Props 类型
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+// 获取当前文章数据
+const { post } = Astro.props as Props;
+
+// 获取相关文章（同标签）
+const allPosts = await getCollection("blog");
+const relatedPosts = allPosts
+  .filter((p) => {
+    // 排除当前文章
+    if (p.id === post.id) return false;
+    // 查找有相同标签的文章
+    const commonTags = p.data.tags.filter((tag) => post.data.tags.includes(tag));
+    return commonTags.length > 0;
+  })
+  .sort((a, b) => {
+    // 按共同标签数量排序
+    const aCommonTags = a.data.tags.filter((tag) => post.data.tags.includes(tag)).length;
+    const bCommonTags = b.data.tags.filter((tag) => post.data.tags.includes(tag)).length;
+    return bCommonTags - aCommonTags;
+  })
+  .slice(0, 3); // 最多 3 篇
+---
+
+<!-- 使用博客布局包裹页面 -->
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  keywords={post.data.tags}
+  image={post.data.heroImage}
+>
+  <!-- 返回按钮 -->
+  <div class="mx-auto max-w-3xl px-4 pt-8">
+    <a
+      href="/blog"
+      class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+    >
+      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      返回博客列表
+    </a>
+  </div>
+
+  <!-- 文章容器 -->
+  <article class="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-8">
+    <!-- 文章头部 -->
+    <header class="flex flex-col gap-4">
+      <!-- 日期信息 -->
+      <div class="flex items-center gap-2 text-sm text-neutral-500">
+        <FormattedDate date={post.data.publishDate} client:load />
+        {post.data.updatedDate && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>更新于 </span>
+            <FormattedDate date={post.data.updatedDate} client:load />
+          </>
+        )}
+      </div>
+      
+      <!-- 文章标题 -->
+      <h1 class="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+        {post.data.title}
+      </h1>
+      
+      <!-- 文章描述（可选） -->
+      {post.data.description && (
+        <p class="text-xl leading-relaxed text-neutral-600">{post.data.description}</p>
+      )}
+      
+      <!-- 标签列表（可选） -->
+      {post.data.tags?.length ? (
+        <ul class="flex flex-wrap gap-2">
+          {post.data.tags.map((tag: string) => (
+            <li class="rounded-full bg-neutral-100 px-3 py-1 text-sm text-neutral-700">
+              #{tag}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      
+      <!-- 封面图片（可选） -->
+      {post.data.heroImage && (
+        <Image
+          src={post.data.heroImage}
+          alt={post.data.title}
+          width={1200}
+          height={630}
+          class="h-auto w-full rounded-lg object-cover shadow-lg"
+          loading="eager"
+          format="webp"
+          quality={90}
+        />
+      )}
+    </header>
+
+    <!-- 分割线 -->
+    <hr class="border-neutral-200" />
+
+    <!-- 文章正文内容 -->
+    <div class="prose prose-neutral max-w-none" set:html={post.rendered?.html} />
+  </article>
+
+  <!-- 相关文章推荐 -->
+  {relatedPosts.length > 0 && (
+    <section class="mx-auto max-w-3xl border-t border-neutral-200 px-4 py-12">
+      <h2 class="mb-6 text-2xl font-bold text-neutral-900">相关文章</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {relatedPosts.map((relatedPost) => (
+          <article class="group flex flex-col gap-3 rounded-lg border border-neutral-200 p-4 transition-all hover:shadow-lg">
+            {relatedPost.data.heroImage && (
+              <a href={`/blog/${relatedPost.id}`} class="block overflow-hidden rounded-md">
+                <Image
+                  src={relatedPost.data.heroImage}
+                  alt={relatedPost.data.title}
+                  width={300}
+                  height={169}
+                  class="h-32 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  format="webp"
+                  quality={70}
+                />
+              </a>
+            )}
+            <div class="flex flex-col gap-2">
+              <h3 class="line-clamp-2 text-base font-semibold text-neutral-900">
+                <a 
+                  href={`/blog/${relatedPost.id}`}
+                  class="transition-colors hover:text-neutral-600"
+                >
+                  {relatedPost.data.title}
+                </a>
+              </h3>
+              {relatedPost.data.description && (
+                <p class="line-clamp-2 text-sm text-neutral-600">
+                  {relatedPost.data.description}
+                </p>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 返回顶部按钮 -->
+  <div class="mx-auto max-w-3xl px-4 pb-12">
+    <a
+      href="#"
+      class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+    >
+      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+      返回顶部
+    </a>
+  </div>
+</BlogLayout>
+
+<style>
+  @layer utilities {
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+</style>
