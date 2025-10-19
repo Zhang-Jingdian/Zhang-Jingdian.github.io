@@ -1,0 +1,143 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE_CONFIG, BLOG_CONFIG } from '@/config';
+import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
+import { Image } from 'astro:assets';
+
+// 获取所有博客文章并按日期降序排序
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+// 获取所有唯一标签
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+---
+
+<BlogLayout title={`博客 - ${SITE_CONFIG.title}`} description="浏览所有博客文章">
+	<div class="mx-auto max-w-6xl px-4 py-12">
+		<!-- 页面标题 -->
+		<div class="mb-12">
+			<h1 class="mb-4 text-4xl font-bold tracking-tight text-neutral-900">
+				博客文章
+			</h1>
+			<p class="text-lg text-neutral-600">
+				共 {posts.length} 篇文章
+			</p>
+		</div>
+
+		<!-- 标签过滤（可选功能，暂时隐藏） -->
+		<!-- {allTags.length > 0 && (
+			<div class="mb-8">
+				<h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-700">标签</h2>
+				<div class="flex flex-wrap gap-2">
+					{allTags.map((tag) => (
+						<a
+							href={`/blog/tag/${tag}`}
+							class="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-600 transition-colors hover:border-neutral-900 hover:text-neutral-900"
+						>
+							{tag}
+						</a>
+					))}
+				</div>
+			</div>
+		)} -->
+
+		<!-- 文章列表 -->
+		{posts.length > 0 ? (
+			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{posts.map((post) => (
+					<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
+						{/* 封面图片 */}
+						{post.data.heroImage && (
+							<a href={`/blog/${post.id}`} class="block overflow-hidden">
+								<Image
+									src={post.data.heroImage}
+									alt={post.data.title}
+									width={400}
+									height={225}
+									class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+									format="webp"
+									quality={80}
+								/>
+							</a>
+						)}
+						
+						{/* 文章信息 */}
+						<div class="flex flex-1 flex-col gap-3 p-6">
+							{/* 日期 */}
+							<div class="text-sm text-neutral-500">
+								<FormattedDate date={post.data.publishDate} client:load />
+							</div>
+							
+							{/* 标题 */}
+							<h2 class="text-xl font-semibold text-neutral-900">
+								<a 
+									href={`/blog/${post.id}`} 
+									class="transition-colors hover:text-neutral-600"
+								>
+									{post.data.title}
+								</a>
+							</h2>
+							
+							{/* 描述 */}
+							{post.data.description && (
+								<p class="line-clamp-2 text-sm text-neutral-600">
+									{post.data.description}
+								</p>
+							)}
+							
+							{/* 标签 */}
+							{post.data.tags?.length > 0 && (
+								<div class="mt-auto flex flex-wrap gap-2">
+									{post.data.tags.slice(0, 3).map((tag: string) => (
+										<span class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600">
+											{tag}
+										</span>
+									))}
+									{post.data.tags.length > 3 && (
+										<span class="text-xs text-neutral-400">
+											+{post.data.tags.length - 3}
+										</span>
+									)}
+								</div>
+							)}
+							
+							{/* 阅读更多 */}
+							<a
+								href={`/blog/${post.id}`}
+								class="mt-2 inline-flex items-center text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600"
+							>
+								阅读全文
+								<svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		) : (
+			<div class="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-neutral-200">
+				<svg class="mb-4 h-16 w-16 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+				</svg>
+				<p class="text-lg text-neutral-500">暂无文章</p>
+				<p class="mt-2 text-sm text-neutral-400">开始创建你的第一篇博客吧！</p>
+			</div>
+		)}
+	</div>
+</BlogLayout>
+
+<style>
+	/* Tailwind v4 支持的样式 - 使用 @layer 避免 @apply 问题 */
+	@layer utilities {
+		.line-clamp-2 {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+	}
+</style>
