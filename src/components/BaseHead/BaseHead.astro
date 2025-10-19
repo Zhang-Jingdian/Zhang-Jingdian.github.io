@@ -1,0 +1,74 @@
+---
+import { SITE_CONFIG } from '@/config';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: ImageMetadata | string;
+	keywords?: string[];
+}
+
+const {
+	title,
+	description = SITE_CONFIG.description,
+	image = SITE_CONFIG.defaultImage,
+	keywords = []
+} = Astro.props;
+
+// 生成规范 URL（开发环境使用相对路径）
+const canonicalURL = Astro.site 
+	? new URL(Astro.url.pathname, Astro.site).href 
+	: Astro.url.pathname;
+
+// 生成绝对 URL 用于社交分享（OG 和 Twitter 需要绝对路径）
+const getAbsoluteUrl = (img: ImageMetadata | string) => {
+	// 如果是 ImageMetadata 对象，使用 src 属性
+	if (typeof img === 'object' && 'src' in img) {
+		const imgSrc = img.src;
+		if (imgSrc.startsWith('http')) return imgSrc;
+		return Astro.site ? new URL(imgSrc, Astro.site).href : imgSrc;
+	}
+	// 如果是字符串路径
+	if (typeof img === 'string') {
+		if (img.startsWith('http')) return img;
+		return Astro.site ? new URL(img, Astro.site).href : img;
+	}
+	return SITE_CONFIG.defaultImage;
+};
+
+const ogImage = getAbsoluteUrl(image);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title={SITE_CONFIG.title} href="/rss.xml" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+{description && <meta name="description" content={description} />}
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+<meta name="author" content={SITE_CONFIG.author} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+{description && <meta name="twitter:description" content={description} />}
+<meta name="twitter:image" content={ogImage} />
