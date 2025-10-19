@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { SITE_CONFIG } from '@/config';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	keywords?: string[];
+	image?: ImageMetadata | string;
+}
+
+const {
+	title,
+	description = SITE_CONFIG.description,
+	keywords = [],
+	image = SITE_CONFIG.defaultImage
+} = Astro.props;
+---
+
+<!-- 博客布局嵌套基础布局 -->
+<BaseLayout 
+	title={title} 
+	description={description} 
+	keywords={keywords} 
+	image={image}
+>
+	<!-- 主内容区 -->
+	<main>
+		<slot />
+	</main>
+</BaseLayout>
