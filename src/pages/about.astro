@@ -1,0 +1,66 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { SITE_CONFIG } from '@/config';
+---
+
+<BlogLayout title={`关于 - ${SITE_CONFIG.title}`} description="关于我和这个博客">
+	<div class="mx-auto max-w-3xl px-4 py-12">
+		<article class="prose">
+			<h1 class="mb-8 text-4xl font-bold text-neutral-900">关于我</h1>
+			
+			<p class="mb-4 text-xl leading-relaxed text-neutral-600">
+				欢迎来到我的个人博客！这里是我分享技术、思考和生活的地方。
+			</p>
+
+			<h2 class="mb-4 mt-8 text-2xl font-semibold text-neutral-900">关于这个博客</h2>
+			<p class="mb-4 leading-relaxed text-neutral-800">
+				这个博客使用 <a href="https://astro.build" target="_blank" rel="noopener" class="text-neutral-900 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-600">Astro</a> 构建，
+				结合了 Vue 3、Tailwind CSS 等现代前端技术。
+			</p>
+
+			<h3 class="mb-3 mt-6 text-xl font-semibold text-neutral-900">技术栈</h3>
+			<ul class="mb-4 list-disc pl-6 text-neutral-800">
+				<li class="mb-2"><strong>框架</strong>：Astro 5.x</li>
+				<li class="mb-2"><strong>UI 组件</strong>：Vue 3</li>
+				<li class="mb-2"><strong>样式</strong>：Tailwind CSS v4</li>
+				<li class="mb-2"><strong>内容管理</strong>：Markdown / MDX</li>
+				<li class="mb-2"><strong>部署</strong>：待定</li>
+			</ul>
+
+			<h2 class="mb-4 mt-8 text-2xl font-semibold text-neutral-900">联系方式</h2>
+			<p class="mb-4 leading-relaxed text-neutral-800">你可以通过以下方式联系我：</p>
+			<ul class="mb-4 list-disc pl-6 text-neutral-800">
+				{SITE_CONFIG.social.github && (
+					<li class="mb-2">
+						GitHub: <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener" class="text-neutral-900 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-600">
+							{SITE_CONFIG.social.github}
+						</a>
+					</li>
+				)}
+				{SITE_CONFIG.social.twitter && (
+					<li class="mb-2">
+						Twitter: <a href={SITE_CONFIG.social.twitter} target="_blank" rel="noopener" class="text-neutral-900 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-600">
+							{SITE_CONFIG.social.twitter}
+						</a>
+					</li>
+				)}
+				{SITE_CONFIG.social.email && (
+					<li class="mb-2">
+						Email: <a href={`mailto:${SITE_CONFIG.social.email}`} class="text-neutral-900 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-600">
+							{SITE_CONFIG.social.email}
+						</a>
+					</li>
+				)}
+			</ul>
+
+			<h2 class="mb-4 mt-8 text-2xl font-semibold text-neutral-900">版权声明</h2>
+			<p class="mb-4 leading-relaxed text-neutral-800">
+				本站所有原创内容采用 
+				<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener" class="text-neutral-900 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-600">
+					CC BY-NC-SA 4.0
+				</a> 
+				协议，转载请注明出处。
+			</p>
+		</article>
+	</div>
+</BlogLayout>
