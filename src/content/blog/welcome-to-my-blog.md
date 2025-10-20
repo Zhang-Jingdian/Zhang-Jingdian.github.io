@@ -19,7 +19,7 @@ tags:
 
 ## 文章结构
 
-```text
+```astro
 src/
   content/
     blog/
