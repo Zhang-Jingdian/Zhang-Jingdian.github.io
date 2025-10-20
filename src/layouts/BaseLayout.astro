@@ -21,8 +21,8 @@ const { title, description, keywords, image } = Astro.props;
 		<BaseHead title={title} description={description} keywords={keywords} image={image} />
 	</head>
 	<body class="min-h-screen bg-white text-neutral-900 antialiased">
-		<!-- 页头导航 - 页面加载时立即渲染 -->
-		<BaseHeader client:load />
+		<!-- 页头导航 - 页面加载时立即渲染，传入当前路径避免 hydration 不一致 -->
+		<BaseHeader client:load currentPath={Astro.url.pathname} />
 		
 		<!-- 主内容区（子布局会插入这里） -->
 		<slot />

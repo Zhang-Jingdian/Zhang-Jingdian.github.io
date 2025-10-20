@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { SITE_CONFIG } from '../../config';
 import HeaderLink from './HeaderLink.vue';
+
+// 接收从 Astro 传入的当前路径
+interface Props {
+	currentPath?: string;
+}
+
+const props = defineProps<Props>();
 </script>
 
 <template>
@@ -15,7 +22,7 @@ import HeaderLink from './HeaderLink.vue';
       </a>
       <ul class="flex gap-6 text-sm">
         <li v-for="item in SITE_CONFIG.nav" :key="item.href">
-          <HeaderLink :href="item.href">
+          <HeaderLink :href="item.href" :currentPath="props.currentPath">
             {{ item.name }}
           </HeaderLink>
         </li>
