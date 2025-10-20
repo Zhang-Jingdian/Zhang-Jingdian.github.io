@@ -1,0 +1,102 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE_CONFIG } from '@/config';
+import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
+import { Image } from 'astro:assets';
+
+// 生成所有标签的静态路径
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+	return allTags.map((tag) => ({
+		params: { tag },
+		props: {
+			posts: posts
+				.filter((post) => post.data.tags.includes(tag))
+				.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+		}
+	}));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout 
+	title={`标签：${tag} - ${SITE_CONFIG.title}`} 
+	description={`查看所有标签为 ${tag} 的文章`}
+>
+	<div class="mx-auto max-w-6xl px-4 py-12">
+		<!-- 页面标题 -->
+		<div class="mb-12">
+			<div class="mb-4 flex items-center gap-3">
+				<a 
+					href="/blog" 
+					class="text-neutral-500 transition-colors hover:text-neutral-900"
+					title="返回博客列表"
+				>
+					<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+					</svg>
+				</a>
+				<h1 class="text-4xl font-bold tracking-tight text-neutral-900">
+					标签：<span class="text-neutral-600">{tag}</span>
+				</h1>
+			</div>
+			<p class="text-lg text-neutral-600">
+				共 {posts.length} 篇文章
+			</p>
+		</div>
+
+		<!-- 文章列表 -->
+		{posts.length > 0 ? (
+			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{posts.map((post) => (
+					<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
+						<a href={`/blog/${post.id}`} class="block">
+							{post.data.image && (
+								<div class="aspect-[16/9] overflow-hidden bg-neutral-100">
+									<Image
+										src={post.data.image}
+										alt={post.data.title}
+										class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+										width={600}
+										height={338}
+									/>
+								</div>
+							)}
+							<div class="flex flex-1 flex-col p-6">
+								<h2 class="mb-3 text-xl font-bold text-neutral-900 transition-colors group-hover:text-neutral-600">
+									{post.data.title}
+								</h2>
+								{post.data.description && (
+									<p class="mb-4 line-clamp-2 flex-1 text-neutral-600">
+										{post.data.description}
+									</p>
+								)}
+								<div class="flex items-center justify-between text-sm text-neutral-500">
+									<FormattedDate client:load date={post.data.publishDate} />
+									{post.data.tags && post.data.tags.length > 0 && (
+										<div class="flex gap-2">
+											{post.data.tags.slice(0, 2).map((tag) => (
+												<span class="rounded-full bg-neutral-100 px-2 py-1 text-xs">
+													{tag}
+												</span>
+											))}
+										</div>
+									)}
+								</div>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+		) : (
+			<div class="py-12 text-center text-neutral-500">
+				<p>该标签下暂无文章</p>
+			</div>
+		)}
+	</div>
+</BaseLayout>
