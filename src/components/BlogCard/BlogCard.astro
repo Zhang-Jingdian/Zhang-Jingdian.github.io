@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	imageWidth?: number;
+	imageHeight?: number;
+	maxTags?: number;
+}
+
+const { 
+	post, 
+	imageWidth = 400, 
+	imageHeight = 225,
+	maxTags = 3 
+} = Astro.props;
+---
+
+<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
+	<!-- 封面图片 -->
+	{post.data.heroImage && (
+		<a href={`/blog/${post.id}`} class="block overflow-hidden">
+			<Image
+				src={post.data.heroImage}
+				alt={post.data.title}
+				width={imageWidth}
+				height={imageHeight}
+				class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+				loading="lazy"
+				format="webp"
+				quality={80}
+			/>
+		</a>
+	)}
+	
+	<!-- 文章信息 -->
+	<div class="flex flex-1 flex-col gap-3 p-6">
+		<!-- 日期 -->
+		<div class="text-sm text-neutral-500">
+			<FormattedDate date={post.data.publishDate} client:load />
+		</div>
+		
+		<!-- 标题 -->
+		<h2 class="text-xl font-semibold text-neutral-900">
+			<a 
+				href={`/blog/${post.id}`} 
+				class="transition-colors hover:text-neutral-600"
+			>
+				{post.data.title}
+			</a>
+		</h2>
+		
+		<!-- 描述 -->
+		{post.data.description && (
+			<p class="line-clamp-2 text-sm text-neutral-600">
+				{post.data.description}
+			</p>
+		)}
+		
+		<!-- 标签 -->
+		{post.data.tags?.length > 0 && (
+			<div class="mt-auto flex flex-wrap gap-2">
+				{post.data.tags.slice(0, maxTags).map((tag: string) => (
+					<a 
+						href={`/blog/tag/${tag}`}
+						class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600 transition-colors hover:bg-neutral-900 hover:text-white"
+					>
+						{tag}
+					</a>
+				))}
+				{post.data.tags.length > maxTags && (
+					<span class="text-xs text-neutral-400">
+						+{post.data.tags.length - maxTags}
+					</span>
+				)}
+			</div>
+		)}
+	</div>
+</article>
+
+<style>
+	.line-clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>

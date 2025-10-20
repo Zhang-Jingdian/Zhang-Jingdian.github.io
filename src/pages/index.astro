@@ -2,8 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { SITE_CONFIG } from '@/config';
-import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
-import { Image } from 'astro:assets';
+import BlogCard from '@/components/BlogCard/BlogCard.astro';
 
 // 获取最新的 6 篇博客文章
 const posts = (await getCollection('blog'))
@@ -52,70 +51,7 @@ const posts = (await getCollection('blog'))
 
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{posts.map((post) => (
-						<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
-							{/* 封面图片 */}
-							{post.data.heroImage && (
-								<a href={`/blog/${post.id}`} class="block overflow-hidden">
-									<Image
-										src={post.data.heroImage}
-										alt={post.data.title}
-										width={400}
-										height={225}
-										class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-										loading="lazy"
-										format="webp"
-										quality={80}
-									/>
-								</a>
-							)}
-							
-							{/* 文章信息 */}
-							<div class="flex flex-1 flex-col gap-3 p-6">
-								{/* 日期 */}
-								<div class="text-sm text-neutral-500">
-									<FormattedDate date={post.data.publishDate} client:load />
-								</div>
-								
-								{/* 标题 */}
-								<h3 class="text-xl font-semibold text-neutral-900">
-									<a 
-										href={`/blog/${post.id}`} 
-										class="transition-colors hover:text-neutral-600"
-									>
-										{post.data.title}
-									</a>
-								</h3>
-								
-								{/* 描述 */}
-								{post.data.description && (
-									<p class="line-clamp-2 text-sm text-neutral-600">
-										{post.data.description}
-									</p>
-								)}
-								
-								{/* 标签 */}
-								{post.data.tags?.length > 0 && (
-									<div class="mt-auto flex flex-wrap gap-2">
-										{post.data.tags.slice(0, 3).map((tag: string) => (
-											<span class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600">
-												{tag}
-											</span>
-										))}
-									</div>
-								)}
-								
-								{/* 阅读更多 */}
-								<a
-									href={`/blog/${post.id}`}
-									class="mt-2 inline-flex items-center text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600"
-								>
-									阅读全文
-									<svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-									</svg>
-								</a>
-							</div>
-						</article>
+						<BlogCard post={post} />
 					))}
 				</div>
 			</section>

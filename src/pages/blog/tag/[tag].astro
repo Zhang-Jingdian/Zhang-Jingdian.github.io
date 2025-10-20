@@ -2,8 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { SITE_CONFIG } from '@/config';
-import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
-import { Image } from 'astro:assets';
+import BlogCard from '@/components/BlogCard/BlogCard.astro';
 
 // 生成所有标签的静态路径
 export async function getStaticPaths() {
@@ -54,43 +53,7 @@ const { posts } = Astro.props;
 		{posts.length > 0 ? (
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 				{posts.map((post) => (
-					<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
-						<a href={`/blog/${post.id}`} class="block">
-							{post.data.heroImage && (
-								<div class="aspect-[16/9] overflow-hidden bg-neutral-100">
-									<Image
-										src={post.data.heroImage}
-										alt={post.data.title}
-										class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-										width={600}
-										height={338}
-									/>
-								</div>
-							)}
-							<div class="flex flex-1 flex-col p-6">
-								<h2 class="mb-3 text-xl font-bold text-neutral-900 transition-colors group-hover:text-neutral-600">
-									{post.data.title}
-								</h2>
-								{post.data.description && (
-									<p class="mb-4 line-clamp-2 flex-1 text-neutral-600">
-										{post.data.description}
-									</p>
-								)}
-								<div class="flex items-center justify-between text-sm text-neutral-500">
-									<FormattedDate client:load date={post.data.publishDate} />
-									{post.data.tags && post.data.tags.length > 0 && (
-										<div class="flex gap-2">
-											{post.data.tags.slice(0, 2).map((tag) => (
-												<span class="rounded-full bg-neutral-100 px-2 py-1 text-xs">
-													{tag}
-												</span>
-											))}
-										</div>
-									)}
-								</div>
-							</div>
-						</a>
-					</article>
+					<BlogCard post={post} imageWidth={600} imageHeight={338} />
 				))}
 			</div>
 		) : (
