@@ -3,6 +3,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* 隐藏滚动条但保留占位空间，防止布局偏移 */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
