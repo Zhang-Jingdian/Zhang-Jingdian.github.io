@@ -11,6 +11,8 @@ import FormattedDate from "@/components/FormattedDate/FormattedDate.vue";
 import { Image } from "astro:assets";
 // 导入目录组件
 import TableOfContents from "@/components/TableOfContents/TableOfContents.vue";
+// 导入阅读进度条组件
+import ReadingProgress from "@/components/ReadingProgress/ReadingProgress.vue";
 
 /**
  * 生成静态路径
@@ -80,6 +82,9 @@ const relatedPosts = allPosts
   keywords={post.data.tags}
   image={post.data.heroImage}
 >
+  <!-- 阅读进度条 -->
+  <ReadingProgress client:load />
+
   <!-- 主容器：文章 + 目录侧边栏 -->
   <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 lg:grid-cols-[1fr_280px]">
     <!-- 文章主体 -->
