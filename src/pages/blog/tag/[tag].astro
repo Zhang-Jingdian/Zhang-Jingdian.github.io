@@ -56,10 +56,10 @@ const { posts } = Astro.props;
 				{posts.map((post) => (
 					<article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
 						<a href={`/blog/${post.id}`} class="block">
-							{post.data.image && (
+							{post.data.heroImage && (
 								<div class="aspect-[16/9] overflow-hidden bg-neutral-100">
 									<Image
-										src={post.data.image}
+										src={post.data.heroImage}
 										alt={post.data.title}
 										class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 										width={600}
