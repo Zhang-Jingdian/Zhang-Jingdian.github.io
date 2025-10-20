@@ -9,6 +9,8 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate/FormattedDate.vue";
 // 导入 Astro 图片组件
 import { Image } from "astro:assets";
+// 导入目录组件
+import TableOfContents from "@/components/TableOfContents/TableOfContents.vue";
 
 /**
  * 生成静态路径
@@ -32,6 +34,25 @@ interface Props {
 
 // 获取当前文章数据
 const { post } = Astro.props as Props;
+
+// 从渲染的 HTML 中提取标题生成目录
+const extractHeadings = (html: string) => {
+  const headingRegex = /<h([2-3])[^>]*id="([^"]*)"[^>]*>(.*?)<\/h\1>/g;
+  const headings: Array<{ text: string; id: string; level: number }> = [];
+  let match;
+
+  while ((match = headingRegex.exec(html)) !== null) {
+    headings.push({
+      level: parseInt(match[1]),
+      id: match[2],
+      text: match[3].replace(/<[^>]*>/g, '') // 移除 HTML 标签
+    });
+  }
+
+  return headings;
+};
+
+const headings = post.rendered?.html ? extractHeadings(post.rendered.html) : [];
 
 // 获取相关文章（同标签）
 const allPosts = await getCollection("blog");
@@ -59,8 +80,12 @@ const relatedPosts = allPosts
   keywords={post.data.tags}
   image={post.data.heroImage}
 >
-  <!-- 返回按钮 -->
-  <div class="mx-auto max-w-3xl px-4 pt-8">
+  <!-- 主容器：文章 + 目录侧边栏 -->
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 lg:grid-cols-[1fr_280px]">
+    <!-- 文章主体 -->
+    <div class="min-w-0">
+      <!-- 返回按钮 -->
+      <div class="pt-8">
     <a
       href="/blog"
       class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
@@ -70,10 +95,10 @@ const relatedPosts = allPosts
       </svg>
       返回博客列表
     </a>
-  </div>
+      </div>
 
-  <!-- 文章容器 -->
-  <article class="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-8">
+      <!-- 文章容器 -->
+      <article class="flex flex-col gap-8 py-8">
     <!-- 文章头部 -->
     <header class="flex flex-col gap-4">
       <!-- 日期信息 -->
@@ -132,13 +157,13 @@ const relatedPosts = allPosts
     <!-- 分割线 -->
     <hr class="border-neutral-200" />
 
-    <!-- 文章正文内容 -->
-    <div class="prose prose-neutral max-w-none" set:html={post.rendered?.html} />
-  </article>
+        <!-- 文章正文内容 -->
+        <div class="prose prose-neutral max-w-none" set:html={post.rendered?.html} />
+      </article>
 
-  <!-- 相关文章推荐 -->
-  {relatedPosts.length > 0 && (
-    <section class="mx-auto max-w-3xl border-t border-neutral-200 px-4 py-12">
+      <!-- 相关文章推荐 -->
+      {relatedPosts.length > 0 && (
+        <section class="border-t border-neutral-200 px-4 py-12">
       <h2 class="mb-6 text-2xl font-bold text-neutral-900">相关文章</h2>
       <div class="grid gap-6 md:grid-cols-3">
         {relatedPosts.map((relatedPost) => (
@@ -178,17 +203,24 @@ const relatedPosts = allPosts
     </section>
   )}
 
-  <!-- 返回顶部按钮 -->
-  <div class="mx-auto max-w-3xl px-4 pb-12">
-    <a
-      href="#"
-      class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-    >
-      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg>
-      返回顶部
-    </a>
+      <!-- 返回顶部按钮 -->
+      <div class="px-4 pb-12">
+        <a
+          href="#"
+          class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+        >
+          <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+          返回顶部
+        </a>
+      </div>
+    </div>
+
+    <!-- 目录侧边栏（仅在大屏显示） -->
+    <aside class="hidden lg:block">
+      <TableOfContents client:load headings={headings} />
+    </aside>
   </div>
 </BlogLayout>
 
