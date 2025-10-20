@@ -13,6 +13,8 @@ import { Image } from "astro:assets";
 import TableOfContents from "@/components/TableOfContents/TableOfContents.vue";
 // 导入阅读进度条组件
 import ReadingProgress from "@/components/ReadingProgress/ReadingProgress.vue";
+// 导入阅读时间工具
+import { calculateReadingTime, formatReadingTime } from "@/lib/readingTime";
 
 /**
  * 生成静态路径
@@ -55,6 +57,11 @@ const extractHeadings = (html: string) => {
 };
 
 const headings = post.rendered?.html ? extractHeadings(post.rendered.html) : [];
+
+// 计算阅读时间
+const readingTime = post.rendered?.html 
+  ? calculateReadingTime(post.rendered.html) 
+  : 0;
 
 // 获取相关文章（同标签）
 const allPosts = await getCollection("blog");
@@ -104,19 +111,25 @@ const relatedPosts = allPosts
 
       <!-- 文章容器 -->
       <article class="flex flex-col gap-8 py-8">
-    <!-- 文章头部 -->
-    <header class="flex flex-col gap-4">
-      <!-- 日期信息 -->
-      <div class="flex items-center gap-2 text-sm text-neutral-500">
-        <FormattedDate date={post.data.publishDate} client:load />
-        {post.data.updatedDate && (
-          <>
-            <span aria-hidden="true">·</span>
-            <span>更新于 </span>
-            <FormattedDate date={post.data.updatedDate} client:load />
-          </>
-        )}
-      </div>
+        <!-- 文章头部 -->
+        <header class="flex flex-col gap-4">
+          <!-- 日期和阅读时间 -->
+          <div class="flex items-center gap-2 text-sm text-neutral-500">
+            <FormattedDate date={post.data.publishDate} client:load />
+            {post.data.updatedDate && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>更新于 </span>
+                <FormattedDate date={post.data.updatedDate} client:load />
+              </>
+            )}
+            {readingTime > 0 && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>{formatReadingTime(readingTime)}</span>
+              </>
+            )}
+          </div>
       
       <!-- 文章标题 -->
       <h1 class="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
 import type { CollectionEntry } from 'astro:content';
+import { calculateReadingTime, formatReadingTime } from '@/lib/readingTime';
 
 interface Props {
 	post: CollectionEntry<'blog'>;
@@ -16,6 +17,11 @@ const {
 	imageHeight = 225,
 	maxTags = 3 
 } = Astro.props;
+
+// 计算阅读时间
+const readingTime = post.rendered?.html 
+	? calculateReadingTime(post.rendered.html) 
+	: 0;
 ---
 
 <article class="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 transition-all hover:shadow-xl">
@@ -37,9 +43,15 @@ const {
 	
 	<!-- 文章信息 -->
 	<div class="flex flex-1 flex-col gap-3 p-6">
-		<!-- 日期 -->
-		<div class="text-sm text-neutral-500">
+		<!-- 日期和阅读时间 -->
+		<div class="flex items-center gap-2 text-sm text-neutral-500">
 			<FormattedDate date={post.data.publishDate} client:load />
+			{readingTime > 0 && (
+				<>
+					<span aria-hidden="true">·</span>
+					<span>{formatReadingTime(readingTime)}</span>
+				</>
+			)}
 		</div>
 		
 		<!-- 标题 -->
