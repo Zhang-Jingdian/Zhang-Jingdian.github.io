@@ -22,15 +22,20 @@ const updateActiveHeading = () => {
 
 	if (headingElements.length === 0) return;
 
-	// 检查是否滚动到接近底部（距离底部小于 100px）
 	const scrollTop = window.scrollY;
 	const windowHeight = window.innerHeight;
 	const documentHeight = document.documentElement.scrollHeight;
+	
+	// 检查是否在页面顶部（滚动距离小于 100px）
+	if (scrollTop < 100) {
+		activeId.value = '';
+		return;
+	}
+	
+	// 检查是否滚动到接近底部（距离底部小于 100px）
 	const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
-
-	// 如果接近底部，高亮最后一个标题
 	if (isNearBottom) {
-		activeId.value = headingElements[headingElements.length - 1].id;
+		activeId.value = '';
 		return;
 	}
 
@@ -45,10 +50,8 @@ const updateActiveHeading = () => {
 		}
 	}
 	
-	// 如果滚动到顶部，激活第一个
-	if (scrollTopWithOffset < headingElements[0].offsetTop) {
-		activeId.value = headingElements[0].id;
-	}
+	// 没有找到匹配的标题，清空高亮
+	activeId.value = '';
 };
 
 // 平滑滚动到指定标题
