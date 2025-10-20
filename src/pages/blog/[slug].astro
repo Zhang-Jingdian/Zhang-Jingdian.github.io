@@ -9,8 +9,8 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate/FormattedDate.vue";
 // 导入 Astro 图片组件
 import { Image } from "astro:assets";
-// 导入目录组件
-import TableOfContents from "@/components/TableOfContents/TableOfContents.vue";
+// 导入目录包装组件
+import TableOfContentsWrapper from "@/components/TableOfContents/TableOfContentsWrapper.astro";
 // 导入阅读进度条组件
 import ReadingProgress from "@/components/ReadingProgress/ReadingProgress.vue";
 // 导入阅读时间工具
@@ -38,25 +38,6 @@ interface Props {
 
 // 获取当前文章数据
 const { post } = Astro.props as Props;
-
-// 从渲染的 HTML 中提取标题生成目录
-const extractHeadings = (html: string) => {
-  const headingRegex = /<h([2-3])[^>]*id="([^"]*)"[^>]*>(.*?)<\/h\1>/g;
-  const headings: Array<{ text: string; id: string; level: number }> = [];
-  let match;
-
-  while ((match = headingRegex.exec(html)) !== null) {
-    headings.push({
-      level: parseInt(match[1]),
-      id: match[2],
-      text: match[3].replace(/<[^>]*>/g, '') // 移除 HTML 标签
-    });
-  }
-
-  return headings;
-};
-
-const headings = post.rendered?.html ? extractHeadings(post.rendered.html) : [];
 
 // 计算阅读时间
 const readingTime = post.rendered?.html 
@@ -236,9 +217,7 @@ const relatedPosts = allPosts
     </div>
 
     <!-- 目录侧边栏（仅在大屏显示） -->
-    <aside class="hidden lg:block">
-      <TableOfContents client:load headings={headings} />
-    </aside>
+    <TableOfContentsWrapper html={post.rendered?.html || ''} />
   </div>
 </BlogLayout>
 

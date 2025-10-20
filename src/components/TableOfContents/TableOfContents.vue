@@ -82,7 +82,7 @@ onUnmounted(() => {
 <template>
 	<nav
 		v-if="props.headings && props.headings.length > 0"
-		class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-lg border border-neutral-200 bg-white p-4"
+		class="toc-container sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-lg border border-neutral-200 bg-white p-4"
 	>
 		<h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-700">
 			目录
@@ -109,3 +109,15 @@ onUnmounted(() => {
 		</ul>
 	</nav>
 </template>
+
+<style scoped>
+/* 隐藏滚动条但保留滚动功能 */
+.toc-container {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE/Edge */
+}
+
+.toc-container::-webkit-scrollbar {
+	display: none; /* Chrome/Safari/Opera */
+}
+</style>
