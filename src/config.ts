@@ -6,12 +6,12 @@
 // ==================== 站点基本配置 ====================
 export const SITE_CONFIG = {
   // 站点基本信息
-  title: '我的博客',
+  title: '🤓',
   description: '一个基于 Astro 构建的现代博客',
   author: 'Zhang-Jingdian',
   
   // SEO 默认值
-  defaultImage: '/og-image.svg',
+  defaultImage: '/favicon.svg',
   
   // 导航菜单
   nav: [
