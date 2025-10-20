@@ -29,10 +29,10 @@ const isActive = computed(() => {
 		:href="href" 
 		:class="[
 			props.class,
-			'inline-block transition-colors hover:text-neutral-900 dark:hover:text-neutral-100',
+			'inline-block transition-colors hover:text-neutral-900',
 			isActive 
-				? 'font-semibold text-neutral-900 underline decoration-2 underline-offset-4 dark:text-neutral-100' 
-				: 'text-neutral-600 dark:text-neutral-400'
+				? 'font-semibold text-neutral-900 underline decoration-2 underline-offset-4' 
+				: 'text-neutral-600'
 		]"
 	>
 		<slot />
