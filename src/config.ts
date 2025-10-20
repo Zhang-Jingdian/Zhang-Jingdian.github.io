@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   // 站点基本信息
   title: '我的博客',
   description: '一个基于 Astro 构建的现代博客',
-  author: 'Your Name',
+  author: 'Zhang-Jingdian',
   
   // SEO 默认值
   defaultImage: '/og-image.svg',
@@ -22,9 +22,8 @@ export const SITE_CONFIG = {
   
   // 社交媒体链接
   social: {
-    github: 'https://github.com/yourusername',
-    twitter: 'https://twitter.com/yourusername',
-    email: 'your.email@example.com',
+    github: 'https://github.com/Zhang-Jingdian',
+    email: '2157429750@qq.com',
   },
   
   // 版权年份起始
