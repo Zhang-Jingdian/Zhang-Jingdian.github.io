@@ -1,0 +1,168 @@
+---
+import type { GetStaticPaths, Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+import { SITE_CONFIG } from '@/config'
+import BlogCard from '@/components/BlogCard/BlogCard.astro'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  // 每页显示的文章数量
+  const PAGE_SIZE = 9
+  
+  // 获取所有博客文章并按日期降序排序
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  )
+
+  // 使用 paginate 函数生成分页路由
+  return paginate(posts, { pageSize: PAGE_SIZE })
+}) satisfies GetStaticPaths
+
+type Props = {
+  page: Page<CollectionEntry<'blog'>>
+}
+
+const { page } = Astro.props
+
+// 获取所有唯一标签
+const allPosts = await getCollection('blog')
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))]
+
+// 生成页码数组
+const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1)
+const visiblePages = pageNumbers.filter((pageNum) => {
+  return (
+    pageNum === 1 ||
+    pageNum === page.lastPage ||
+    Math.abs(pageNum - page.currentPage) <= 2
+  )
+})
+---
+
+<BaseLayout
+  title={page.currentPage === 1 ? `博客 - ${SITE_CONFIG.title}` : `博客 - 第 ${page.currentPage} 页 - ${SITE_CONFIG.title}`}
+  description="浏览所有博客文章"
+>
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <!-- 页面标题 -->
+    <div class="mb-12">
+      <h1 class="mb-4 text-4xl font-bold tracking-tight text-neutral-900">博客文章</h1>
+      <p class="text-lg text-neutral-600">
+        共 {page.total} 篇文章
+        {page.lastPage > 1 && <span class="text-neutral-400">· 第 {page.currentPage} / {page.lastPage} 页</span>}
+      </p>
+    </div>
+
+    <!-- 标签过滤 -->
+    {
+      allTags.length > 0 && (
+        <div class="mb-8">
+          <h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-700">标签</h2>
+          <div class="flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <a
+                href={`/blog/tag/${tag}`}
+                class="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-600 transition-colors hover:border-neutral-900 hover:text-neutral-900"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- 文章列表 -->
+    {
+      page.data.length > 0 ? (
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {page.data.map((post) => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <div class="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-neutral-200">
+          <svg
+            class="mb-4 h-16 w-16 text-neutral-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          <p class="text-lg text-neutral-500">暂无文章</p>
+          <p class="mt-2 text-sm text-neutral-400">开始创建你的第一篇博客吧！</p>
+        </div>
+      )
+    }
+
+    <!-- 分页导航 -->
+    {
+      page.lastPage > 1 && (
+        <nav class="mt-12 flex items-center justify-center gap-2" aria-label="分页导航">
+          {/* 上一页 */}
+          {page.url.prev ? (
+            <a
+              href={page.url.prev}
+              class="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
+            >
+              ← 上一页
+            </a>
+          ) : (
+            <span class="cursor-not-allowed rounded-lg border border-neutral-100 px-4 py-2 text-sm font-medium text-neutral-400">
+              ← 上一页
+            </span>
+          )}
+
+          {/* 页码 */}
+          <div class="flex gap-1">
+            {visiblePages.map((pageNum, index) => {
+              const isCurrentPage = pageNum === page.currentPage
+              const href = pageNum === 1 ? '/blog' : `/blog/${pageNum}`
+              const prevPageNum = index > 0 ? visiblePages[index - 1] : 0
+              const showEllipsis = prevPageNum > 0 && pageNum - prevPageNum > 1
+
+              return (
+                <>
+                  {showEllipsis && <span class="px-2 text-neutral-400">···</span>}
+                  <a
+                    href={href}
+                    class:list={[
+                      'rounded-lg px-4 py-2 text-sm font-medium transition',
+                      isCurrentPage
+                        ? 'bg-neutral-900 text-white'
+                        : 'border border-neutral-200 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900',
+                    ]}
+                    aria-current={isCurrentPage ? 'page' : undefined}
+                  >
+                    {pageNum}
+                  </a>
+                </>
+              )
+            })}
+          </div>
+
+          {/* 下一页 */}
+          {page.url.next ? (
+            <a
+              href={page.url.next}
+              class="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
+            >
+              下一页 →
+            </a>
+          ) : (
+            <span class="cursor-not-allowed rounded-lg border border-neutral-100 px-4 py-2 text-sm font-medium text-neutral-400">
+              下一页 →
+            </span>
+          )}
+        </nav>
+      )
+    }
+  </div>
+</BaseLayout>
