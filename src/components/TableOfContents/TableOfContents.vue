@@ -22,19 +22,31 @@ const updateActiveHeading = () => {
 
 	if (headingElements.length === 0) return;
 
+	// 检查是否滚动到接近底部（距离底部小于 100px）
+	const scrollTop = window.scrollY;
+	const windowHeight = window.innerHeight;
+	const documentHeight = document.documentElement.scrollHeight;
+	const isNearBottom = scrollTop + windowHeight >= documentHeight - 100;
+
+	// 如果接近底部，高亮最后一个标题
+	if (isNearBottom) {
+		activeId.value = headingElements[headingElements.length - 1].id;
+		return;
+	}
+
 	// 找到当前视口中最靠上的标题
-	const scrollTop = window.scrollY + 100; // 偏移量
+	const scrollTopWithOffset = scrollTop + 100; // 偏移量
 	
 	for (let i = headingElements.length - 1; i >= 0; i--) {
 		const el = headingElements[i];
-		if (el.offsetTop <= scrollTop) {
+		if (el.offsetTop <= scrollTopWithOffset) {
 			activeId.value = el.id;
 			return;
 		}
 	}
 	
 	// 如果滚动到顶部，激活第一个
-	if (scrollTop < headingElements[0].offsetTop) {
+	if (scrollTopWithOffset < headingElements[0].offsetTop) {
 		activeId.value = headingElements[0].id;
 	}
 };
@@ -43,6 +55,9 @@ const updateActiveHeading = () => {
 const scrollToHeading = (id: string) => {
 	const element = document.getElementById(id);
 	if (element) {
+		// 立即更新激活状态
+		activeId.value = id;
+		
 		const offset = 80; // 距离顶部的偏移量
 		const elementPosition = element.offsetTop;
 		const offsetPosition = elementPosition - offset;
