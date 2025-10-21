@@ -45,7 +45,7 @@ const posts = (await getCollection('blog'))
 						href="/blog"
 						class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
 					>
-						查看全部 >>
+						查看全部 →
 					</a>
 				</div>
 
@@ -55,17 +55,6 @@ const posts = (await getCollection('blog'))
 					))}
 				</div>
 			</section>
-		)}
-
-		{/* 空状态 */}
-		{posts.length === 0 && (
-			<div class="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-neutral-200">
-				<svg class="mb-4 h-16 w-16 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-				</svg>
-				<p class="text-lg text-neutral-500">暂无文章</p>
-				<p class="mt-2 text-sm text-neutral-400">开始创建你的第一篇博客吧！</p>
-			</div>
 		)}
 	</div>
 </BaseLayout>
