@@ -5,6 +5,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 import { SITE_CONFIG } from '@/config'
 import BlogCard from '@/components/BlogCard/BlogCard.astro'
+import { PaginationButton } from '@/components/Pagination'
 
 export const getStaticPaths = (async ({ paginate }) => {
   // 每页显示的文章数量
@@ -89,18 +90,13 @@ const visiblePages = pageNumbers.filter((pageNum) => {
       page.lastPage > 1 && (
         <nav class="mt-12 flex items-center justify-center gap-2" aria-label="分页导航">
           {/* 上一页 */}
-          {page.url.prev ? (
-            <a
-              href={page.url.prev}
-              class="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
-            >
-              ← 上一页
-            </a>
-          ) : (
-            <span class="cursor-not-allowed rounded-lg border border-neutral-100 px-4 py-2 text-sm font-medium text-neutral-400">
-              ← 上一页
-            </span>
-          )}
+          <PaginationButton
+            href={page.url.prev}
+            disabled={!page.url.prev}
+            client:load
+          >
+            ← 上一页
+          </PaginationButton>
 
           {/* 页码 */}
           <div class="flex gap-1">
@@ -112,37 +108,31 @@ const visiblePages = pageNumbers.filter((pageNum) => {
 
               return (
                 <>
-                  {showEllipsis && <span class="px-2 text-neutral-400">···</span>}
-                  <a
+                  {showEllipsis && (
+                    <PaginationButton variant="ghost" disabled client:load>
+                      ···
+                    </PaginationButton>
+                  )}
+                  <PaginationButton
                     href={href}
-                    class:list={[
-                      'rounded-lg px-4 py-2 text-sm font-medium transition',
-                      isCurrentPage
-                        ? 'bg-neutral-900 text-white'
-                        : 'border border-neutral-200 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900',
-                    ]}
-                    aria-current={isCurrentPage ? 'page' : undefined}
+                    variant={isCurrentPage ? 'active' : 'default'}
+                    client:load
                   >
                     {pageNum}
-                  </a>
+                  </PaginationButton>
                 </>
               )
             })}
           </div>
 
           {/* 下一页 */}
-          {page.url.next ? (
-            <a
-              href={page.url.next}
-              class="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
-            >
-              下一页 →
-            </a>
-          ) : (
-            <span class="cursor-not-allowed rounded-lg border border-neutral-100 px-4 py-2 text-sm font-medium text-neutral-400">
-              下一页 →
-            </span>
-          )}
+          <PaginationButton
+            href={page.url.next}
+            disabled={!page.url.next}
+            client:load
+          >
+            下一页 →
+          </PaginationButton>
         </nav>
       )
     }
