@@ -10,7 +10,7 @@ const posts = (await getCollection('blog'))
 	.slice(0, 6);
 ---
 
-<BaseLayout title={`首页 - ${SITE_CONFIG.title}`}>
+<BaseLayout title={`首页`}>
 	<div class="mx-auto max-w-6xl px-4 py-12">
 		<!-- Hero Section -->
 		<div class="mb-16 text-center">
@@ -45,7 +45,7 @@ const posts = (await getCollection('blog'))
 						href="/blog"
 						class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
 					>
-						查看全部 →
+						查看全部 >>
 					</a>
 				</div>
 

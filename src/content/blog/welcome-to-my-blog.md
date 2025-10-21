@@ -2,7 +2,7 @@
 title: "欢迎来到我的 Astro 博客"
 description: "用 Astro 和内容集合构建的第一篇示例文章。"
 publishDate: 2025-10-19
-updatedDate: 2025-10-19
+updatedDate: 2025-10-20
 tags:
   - Astro
   - 博客

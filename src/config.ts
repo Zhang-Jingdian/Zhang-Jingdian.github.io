@@ -7,7 +7,7 @@
 export const SITE_CONFIG = {
   // 站点基本信息
   title: '🤓',
-  description: '一个基于 Astro 构建的现代博客',
+  description: '欢迎来到我的个人博客！这里是我分享技术、思考和生活的地方。',
   author: 'Zhang-Jingdian',
   
   // SEO 默认值
