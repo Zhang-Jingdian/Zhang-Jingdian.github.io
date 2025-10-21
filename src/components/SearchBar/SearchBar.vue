@@ -95,7 +95,7 @@ onMounted(() => {
       <kbd
         class="hidden rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-xs font-medium text-gray-500 sm:inline"
       >
-        ⌘⇧K
+        Ctrl/Cmd + Shift + K
       </kbd>
     </button>
 
