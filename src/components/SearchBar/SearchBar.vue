@@ -63,10 +63,10 @@ const closeSearch = () => {
   searchResults.value = []
 }
 
-// 键盘快捷键（Ctrl/Cmd + K）
+// 键盘快捷键（Ctrl/Cmd + Shift + K）
 onMounted(() => {
   const handleKeydown = (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'k') {
       e.preventDefault()
       openSearch()
     }
@@ -95,7 +95,7 @@ onMounted(() => {
       <kbd
         class="hidden rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-xs font-medium text-gray-500 sm:inline"
       >
-        ⌘/CTRL + SHIFT + K
+        ⌘⇧K
       </kbd>
     </button>
 
@@ -150,13 +150,19 @@ onMounted(() => {
                   <p class="mt-1 line-clamp-2 text-sm text-gray-600">
                     {{ result.item.data.description }}
                   </p>
-                  <div v-if="result.item.data.tags?.length" class="mt-2 flex flex-wrap gap-2">
+                  <div v-if="result.item.data.tags?.length" class="mt-2 flex flex-wrap items-center gap-2">
                     <span
                       v-for="tag in result.item.data.tags.slice(0, 3)"
                       :key="tag"
                       class="rounded bg-blue-50 px-2 py-0.5 text-xs text-blue-600"
                     >
                       {{ tag }}
+                    </span>
+                    <span
+                      v-if="result.item.data.tags.length > 3"
+                      class="rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
+                    >
+                      +{{ result.item.data.tags.length - 3 }}
                     </span>
                   </div>
                 </a>
