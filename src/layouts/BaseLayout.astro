@@ -3,6 +3,7 @@ import '@/styles/global.css'
 import BaseHead from '@/components/BaseHead'
 import BaseHeader from '@/components/BaseHeader'
 import BaseFooter from '@/components/BaseFooter'
+import SpeedInsights from '@vercel/speed-insights/astro'
 import type { ImageMetadata } from 'astro'
 import { getCollection } from 'astro:content'
 
@@ -43,5 +44,8 @@ const posts = allPosts.map((post) => ({
 		
 		<!-- 页脚 - 进入视口时才加载（性能优化） -->
 		<BaseFooter client:visible />
+		
+		<!-- Vercel Speed Insights - 性能监控 -->
+		<SpeedInsights />
 	</body>
 </html>
