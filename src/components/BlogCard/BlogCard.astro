@@ -1,8 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import FormattedDate from '@/components/FormattedDate/FormattedDate.vue';
-import type { CollectionEntry } from 'astro:content';
-import { calculateReadingTime, formatReadingTime } from '@/lib/readingTime';
+import { Image } from 'astro:assets'
+import FormattedDate from '@/components/FormattedDate/FormattedDate.vue'
+import { Tag } from '@/components/Tag'
+import type { CollectionEntry } from 'astro:content'
+import { calculateReadingTime, formatReadingTime } from '@/lib/readingTime'
 
 interface Props {
 	post: CollectionEntry<'blog'>;
@@ -75,17 +76,18 @@ const readingTime = post.rendered?.html
 		{post.data.tags?.length > 0 && (
 			<div class="mt-auto flex flex-wrap gap-2">
 				{post.data.tags.slice(0, maxTags).map((tag: string) => (
-					<a 
+					<Tag 
 						href={`/blog/tag/${tag}`}
-						class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600 transition-colors hover:bg-neutral-900 hover:text-white"
+						variant="default"
+						client:load
 					>
 						{tag}
-					</a>
+					</Tag>
 				))}
 				{post.data.tags.length > maxTags && (
-					<span class="inline-flex items-center rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-400">
+					<Tag variant="counter" interactive={false} client:load>
 						+{post.data.tags.length - maxTags}
-					</span>
+					</Tag>
 				)}
 			</div>
 		)}

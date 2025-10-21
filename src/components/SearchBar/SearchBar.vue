@@ -2,6 +2,8 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import Fuse from 'fuse.js'
 import { Search, X } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { Tag } from '@/components/Tag'
 
 interface Post {
   slug: string
@@ -85,19 +87,15 @@ onMounted(() => {
 <template>
   <div class="relative">
     <!-- 搜索按钮 -->
-    <button
-      @click="openSearch"
-      class="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-500 transition hover:border-gray-300 hover:text-gray-700"
-      aria-label="搜索"
-    >
+    <Button variant="outline" size="sm" @click="openSearch" aria-label="搜索">
       <Search :size="16" />
       <span class="hidden sm:inline">搜索</span>
       <kbd
         class="hidden rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-xs font-medium text-gray-500 sm:inline"
       >
-        Ctrl/Cmd + Shift + K
+        ⌘⇧K
       </kbd>
-    </button>
+    </Button>
 
     <!-- 搜索模态框 -->
     <Teleport to="body">
@@ -151,19 +149,21 @@ onMounted(() => {
                     {{ result.item.data.description }}
                   </p>
                   <div v-if="result.item.data.tags?.length" class="mt-2 flex flex-wrap items-center gap-2">
-                    <span
+                    <Tag
                       v-for="tag in result.item.data.tags.slice(0, 3)"
                       :key="tag"
-                      class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600"
+                      :href="`/blog/tag/${tag}`"
+                      variant="default"
                     >
                       {{ tag }}
-                    </span>
-                    <span
+                    </Tag>
+                    <Tag
                       v-if="result.item.data.tags.length > 3"
-                      class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-400"
+                      variant="counter"
+                      :interactive="false"
                     >
                       +{{ result.item.data.tags.length - 3 }}
-                    </span>
+                    </Tag>
                   </div>
                 </a>
               </div>
