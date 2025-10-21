@@ -154,13 +154,13 @@ onMounted(() => {
                     <span
                       v-for="tag in result.item.data.tags.slice(0, 3)"
                       :key="tag"
-                      class="rounded bg-blue-50 px-2 py-0.5 text-xs text-blue-600"
+                      class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-600"
                     >
                       {{ tag }}
                     </span>
                     <span
                       v-if="result.item.data.tags.length > 3"
-                      class="rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
+                      class="rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-400"
                     >
                       +{{ result.item.data.tags.length - 3 }}
                     </span>
