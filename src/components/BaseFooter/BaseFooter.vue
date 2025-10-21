@@ -6,7 +6,6 @@ const currentYear = new Date().getFullYear();
 
 // 判断是否有社交链接
 const hasSocial = SITE_CONFIG.social.github || 
-                  SITE_CONFIG.social.twitter || 
                   SITE_CONFIG.social.email;
 </script>
 
@@ -31,16 +30,6 @@ const hasSocial = SITE_CONFIG.social.github ||
             aria-label="GitHub"
           >
             GitHub
-          </a>
-          <a 
-            v-if="SITE_CONFIG.social.twitter"
-            :href="SITE_CONFIG.social.twitter"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="transition-colors hover:text-neutral-900"
-            aria-label="Twitter"
-          >
-            Twitter
           </a>
           <a 
             v-if="SITE_CONFIG.social.email"
