@@ -9,7 +9,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   // 生产环境的站点 URL
-  site: 'https://zhang-jingdian-github-io.vercel.app/',
+  site: 'https://zhang-jingdian-github-io.vercel.app',
   
   vite: {
       plugins: [tailwindcss()],
