@@ -3,7 +3,6 @@ title: '电影评分系统 - 科学量化你的观影体验'
 description: '基于多维度评分的电影评价系统，帮助你更客观地评价一部电影的质量'
 publishDate: 2025-10-22
 tags: ['工具', '电影', 'Vue']
-heroImage: '/placeholder-hero.jpg'
 ---
 
 import { MovieScore } from '@/components/MovieScore'
