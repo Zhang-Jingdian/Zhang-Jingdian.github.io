@@ -9,10 +9,10 @@ import {
   movieScoreVariants,
   type MovieScoreConfig,
   type RatingData,
-  type MovieScoreVariants,
 } from './index'
 
-interface Props extends MovieScoreVariants {
+interface Props {
+  theme?: 'default' | 'dark'
   config?: Partial<MovieScoreConfig>
 }
 
