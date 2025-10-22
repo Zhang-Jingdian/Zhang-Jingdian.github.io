@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
-export { default as MovieScore } from './MovieScore.vue'
+export { default as MovieScoreClient } from './MovieScoreClient.vue'
 
 /**
  * 评分系统配置参数
