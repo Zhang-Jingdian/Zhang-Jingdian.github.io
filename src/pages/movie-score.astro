@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import MovieScoreComponent from '@/components/MovieScore/MovieScore.astro'
+---
+
+<BaseLayout
+  title="电影评分系统"
+  description="基于多维度评分的电影评价系统，科学量化你的观影体验"
+  keywords={['电影评分', '评价系统', '工具']}
+>
+  <main class="mx-auto max-w-7xl px-4 py-12">
+    <!-- 页面标题 -->
+    <div class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-neutral-900 mb-4">
+        🎬 电影评分系统
+      </h1>
+      <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+        基于多维度评分的电影评价系统，通过科学的加权计算，帮助你更客观地评价一部电影的质量
+      </p>
+    </div>
+
+    <!-- 评分组件 -->
+    <MovieScoreComponent />
+
+    <!-- 使用说明 -->
+    <div class="mt-12 rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+      <h2 class="text-2xl font-semibold text-neutral-900 mb-4">📝 使用说明</h2>
+      
+      <div class="space-y-4 text-neutral-700">
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">评分维度</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>形（Form）</strong>：视觉、音效、风格 - 外在表现</li>
+            <li><strong>神（Substance）</strong>：人物、剧情、世界观 - 内在内容</li>
+            <li><strong>创新性</strong>：原创元素和避免套路</li>
+            <li><strong>观影体验</strong>：整体感受和情感共鸣</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">计算方法</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li>形权重：35%</li>
+            <li>神权重：45%</li>
+            <li>创新性权重：10%</li>
+            <li>观影体验权重：10%</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">等级标准</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>A+ (9.0-10.0)</strong>：杰作级别，值得反复观看</li>
+            <li><strong>A (8.0-8.9)</strong>：优秀作品，强烈推荐</li>
+            <li><strong>B (7.0-7.9)</strong>：良好水平，值得一看</li>
+            <li><strong>C (6.0-6.9)</strong>：及格水平，可以观看</li>
+            <li><strong>D/F (0-5.9)</strong>：不推荐观看</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <div class="mt-8 text-center">
+      <a
+        href="/blog/movie-rating-system"
+        class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回博客文章
+      </a>
+    </div>
+  </main>
+</BaseLayout>

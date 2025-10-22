@@ -1,0 +1,11 @@
+---
+import { MovieScore } from '@/components/MovieScore'
+
+interface Props {
+  theme?: 'default' | 'dark'
+}
+
+const { theme = 'default' } = Astro.props
+---
+
+<MovieScore theme={theme} client:load />

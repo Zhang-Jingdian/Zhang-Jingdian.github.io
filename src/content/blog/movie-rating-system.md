@@ -5,8 +5,6 @@ publishDate: 2025-10-22
 tags: ['工具', '电影', 'Vue']
 ---
 
-import { MovieScore } from '@/components/MovieScore'
-
 ## 什么是电影评分系统？
 
 这是一个基于多维度评分的电影评价系统，通过科学的加权计算，帮助你更客观地评价一部电影的质量。
@@ -42,9 +40,9 @@ import { MovieScore } from '@/components/MovieScore'
 
 ## 开始评分
 
-下面的交互式评分工具可以帮你给你最近看的电影打个分：
+点击下方按钮访问交互式评分工具：
 
-<MovieScore client:load />
+👉 [**开始评分** →](/movie-score)
 
 ## 等级标准
 
