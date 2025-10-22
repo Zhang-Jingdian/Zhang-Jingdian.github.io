@@ -162,16 +162,16 @@ const nextButtonText = computed(() =>
 </script>
 
 <template>
-  <div :class="cn(movieScoreVariants({ theme }), 'text-white')">
+  <div :class="cn(movieScoreVariants({ theme }), 'text-neutral-900 dark:text-neutral-100')">
     <!-- 进度条 -->
     <div v-if="!showResult" class="mb-8">
-      <div class="h-2 bg-white/20 rounded-full overflow-hidden mb-2">
+      <div class="h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden mb-3">
         <div
-          class="h-full bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 ease-out"
+          class="h-full bg-neutral-900 dark:bg-neutral-100 transition-all duration-300 ease-out"
           :style="{ width: `${progressPercent}%` }"
         />
       </div>
-      <p class="text-center text-sm text-white/80">
+      <p class="text-center text-sm text-neutral-600 dark:text-neutral-400">
         步骤 {{ currentStep }} / {{ totalSteps }}: {{ currentStepData?.title }}
       </p>
     </div>
@@ -179,10 +179,10 @@ const nextButtonText = computed(() =>
     <!-- 评分步骤 -->
     <div v-if="!showResult && currentStepData" class="space-y-6">
       <div>
-        <h2 class="text-3xl font-bold text-center mb-2">
+        <h2 class="text-3xl font-semibold text-center mb-2 text-neutral-900 dark:text-neutral-100">
           {{ currentStepData.title }}
         </h2>
-        <p class="text-center text-white/70 text-sm">
+        <p class="text-center text-neutral-600 dark:text-neutral-400 text-sm">
           {{ currentStepData.description }}
         </p>
       </div>
@@ -192,30 +192,30 @@ const nextButtonText = computed(() =>
         <div
           v-for="formula in currentStepData.formulas"
           :key="formula.title"
-          class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+          class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-5 border border-neutral-200 dark:border-neutral-700"
         >
-          <h3 class="text-lg font-semibold mb-2 text-blue-300">
+          <h3 class="text-base font-semibold mb-2 text-neutral-900 dark:text-neutral-100">
             {{ formula.title }}
           </h3>
-          <p class="font-mono text-center text-xl my-3 text-white">
+          <p class="font-mono text-center text-lg my-3 text-neutral-900 dark:text-neutral-100">
             {{ formula.content }}
           </p>
-          <p class="text-sm text-white/70 text-center">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 text-center">
             {{ formula.description }}
           </p>
         </div>
       </div>
 
       <!-- 评分项 -->
-      <div class="space-y-6 mt-8">
+      <div class="space-y-5 mt-8">
         <div
           v-for="item in currentStepData.items"
           :key="item.id"
-          class="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 transition-all hover:bg-white/10"
+          class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700 transition-all hover:border-neutral-300 dark:hover:border-neutral-600"
         >
           <div class="flex justify-between items-center mb-4">
-            <span class="text-lg font-semibold">{{ item.label }}</span>
-            <span class="text-2xl font-bold text-blue-300">
+            <span class="text-base font-semibold text-neutral-900 dark:text-neutral-100">{{ item.label }}</span>
+            <span class="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
               {{ ratings[item.key].toFixed(1) }}
             </span>
           </div>
@@ -226,10 +226,10 @@ const nextButtonText = computed(() =>
             min="0"
             max="10"
             step="0.1"
-            class="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+            class="w-full h-2 bg-neutral-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer slider"
           />
           
-          <div class="flex justify-between text-sm text-white/60 mt-2">
+          <div class="flex justify-between text-xs text-neutral-500 dark:text-neutral-400 mt-2">
             <span>0</span>
             <span>5</span>
             <span>10</span>
@@ -242,13 +242,13 @@ const nextButtonText = computed(() =>
         <button
           @click="prevStep"
           :disabled="isPrevDisabled"
-          class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-white/10 hover:bg-white/20 border border-white/20"
+          class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100"
         >
           上一步
         </button>
         <button
           @click="nextStep"
-          class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-xl"
+          class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all bg-neutral-900 dark:bg-neutral-100 hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 shadow-md hover:shadow-lg"
         >
           {{ nextButtonText }}
         </button>
@@ -257,72 +257,72 @@ const nextButtonText = computed(() =>
 
     <!-- 结果展示 -->
     <div v-if="showResult" class="space-y-6">
-      <h2 class="text-3xl font-bold text-center mb-8">评分结果</h2>
+      <h2 class="text-3xl font-semibold text-center mb-8 text-neutral-900 dark:text-neutral-100">评分结果</h2>
 
       <!-- 公式说明 -->
       <div class="space-y-4 mb-8">
-        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-          <h3 class="text-lg font-semibold mb-2 text-blue-300">不确定度计算公式</h3>
-          <p class="font-mono text-center text-lg my-2">
+        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-5 border border-neutral-200 dark:border-neutral-700">
+          <h3 class="text-base font-semibold mb-2 text-neutral-900 dark:text-neutral-100">不确定度计算公式</h3>
+          <p class="font-mono text-center text-base my-2 text-neutral-900 dark:text-neutral-100">
             δ = clamp(δ_prior × (1 - (Base - 5)²/25), δ_min, δ_max)
           </p>
-          <p class="text-sm text-white/70 text-center">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 text-center">
             其中：δ_prior = {{ finalConfig.uncertainty.prior }}, 
             δ_min = {{ finalConfig.uncertainty.min }}, 
             δ_max = {{ finalConfig.uncertainty.max }}
           </p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-          <h3 class="text-lg font-semibold mb-2 text-blue-300">置信区间计算公式</h3>
-          <p class="font-mono text-center text-lg my-2">
+        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-5 border border-neutral-200 dark:border-neutral-700">
+          <h3 class="text-base font-semibold mb-2 text-neutral-900 dark:text-neutral-100">置信区间计算公式</h3>
+          <p class="font-mono text-center text-base my-2 text-neutral-900 dark:text-neutral-100">
             [Lower, Upper] = [clamp(Base - δ, 0, 10), clamp(Base + δ, 0, 10)]
           </p>
-          <p class="text-sm text-white/70 text-center">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 text-center">
             其中：Base = 基础总分, δ = 不确定度
           </p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-          <h3 class="text-lg font-semibold mb-2 text-blue-300">星级评分计算公式</h3>
-          <p class="font-mono text-center text-lg my-2">
+        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-5 border border-neutral-200 dark:border-neutral-700">
+          <h3 class="text-base font-semibold mb-2 text-neutral-900 dark:text-neutral-100">星级评分计算公式</h3>
+          <p class="font-mono text-center text-base my-2 text-neutral-900 dark:text-neutral-100">
             Stars = round(Base × 0.5)
           </p>
-          <p class="text-sm text-white/70 text-center">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 text-center">
             将基础总分(0-10)转换为星级(0-5)
           </p>
         </div>
       </div>
 
       <!-- 评分结果 -->
-      <div class="text-center space-y-4 bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/20">
-        <div class="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+      <div class="text-center space-y-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg p-8 border border-neutral-200 dark:border-neutral-700">
+        <div class="text-7xl font-bold text-neutral-900 dark:text-neutral-100">
           {{ result.base }}
         </div>
-        <div class="text-2xl font-semibold text-blue-300">
+        <div class="text-2xl font-semibold text-neutral-700 dark:text-neutral-300">
           {{ result.grade }}
         </div>
-        <div class="text-4xl text-yellow-400">
+        <div class="text-4xl text-amber-500">
           {{ result.stars }}
         </div>
-        <div class="text-lg text-white/70">
+        <div class="text-base text-neutral-600 dark:text-neutral-400">
           置信区间: {{ result.interval }} (δ = {{ result.delta }})
         </div>
       </div>
 
       <!-- 改进建议 -->
-      <div class="mt-8 bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-        <h3 class="text-xl font-semibold mb-4 text-center text-blue-300">
+      <div class="mt-8 bg-neutral-50 dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700">
+        <h3 class="text-xl font-semibold mb-4 text-center text-neutral-900 dark:text-neutral-100">
           优先改进项
         </h3>
         <div class="space-y-3">
           <div
             v-for="item in result.suggestions"
             :key="item.index"
-            class="bg-white/5 rounded-lg p-4 border border-white/10"
+            class="bg-white dark:bg-neutral-900 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700"
           >
-            <span class="font-semibold text-blue-300">{{ item.index }}. {{ item.label }}</span>
-            <span class="text-white/70"> - {{ item.suggestion }}</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.index }}. {{ item.label }}</span>
+            <span class="text-neutral-600 dark:text-neutral-400"> - {{ item.suggestion }}</span>
           </div>
         </div>
       </div>
@@ -330,7 +330,7 @@ const nextButtonText = computed(() =>
       <!-- 重新评分按钮 -->
       <button
         @click="restart"
-        class="w-full py-3 px-6 rounded-lg font-semibold transition-all bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-xl mt-6"
+        class="w-full py-3 px-6 rounded-lg font-semibold transition-all bg-neutral-900 dark:bg-neutral-100 hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 shadow-md hover:shadow-lg mt-6"
       >
         重新评分
       </button>
@@ -342,40 +342,52 @@ const nextButtonText = computed(() =>
 /* 自定义滑块样式 */
 .slider::-webkit-slider-thumb {
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(23 23 23);
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
 }
 
+.dark .slider::-webkit-slider-thumb {
+  background: rgb(245 245 245);
+}
+
 .slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(23 23 23);
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border: none;
   transition: all 0.2s ease;
 }
 
+.dark .slider::-moz-range-thumb {
+  background: rgb(245 245 245);
+}
+
 .slider::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Firefox 滑轨样式 */
 .slider::-moz-range-track {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(229 229 229);
   border-radius: 0.5rem;
-  height: 0.75rem;
+  height: 0.5rem;
+}
+
+.dark .slider::-moz-range-track {
+  background: rgb(64 64 64);
 }
 </style>

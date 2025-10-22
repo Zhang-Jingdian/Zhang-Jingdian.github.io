@@ -186,13 +186,12 @@ export const improvementSuggestions: Record<keyof RatingData, string> = {
  * 评分系统样式变体
  */
 export const movieScoreVariants = cva(
-  'w-full max-w-4xl mx-auto p-6 rounded-2xl shadow-2xl backdrop-blur-lg',
+  'w-full max-w-4xl mx-auto p-8 rounded-lg border transition-all',
   {
     variants: {
       theme: {
-        default: 'bg-gradient-to-br from-purple-900/80 via-blue-900/80 to-indigo-900/80 border border-white/20',
-        light: 'bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 border border-gray-200',
-        dark: 'bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-gray-700',
+        default: 'bg-white border-neutral-200 shadow-lg hover:shadow-xl',
+        dark: 'bg-neutral-900 border-neutral-800 shadow-lg hover:shadow-xl',
       },
     },
     defaultVariants: {
