@@ -1,5 +1,5 @@
 ---
-import { MovieScore } from '@/components/MovieScore'
+import MovieScoreClient from './MovieScoreClient.vue'
 
 interface Props {
   theme?: 'default' | 'dark'
@@ -8,4 +8,4 @@ interface Props {
 const { theme = 'default' } = Astro.props
 ---
 
-<MovieScore theme={theme} client:load />
+<MovieScoreClient theme={theme} client:load />
