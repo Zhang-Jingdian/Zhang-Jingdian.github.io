@@ -1,0 +1,276 @@
+{
+  "main": {
+    "id": "beda1897e2db5684",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4214bd32be03559",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fe029b82e29842a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "学习/cs/大黑书/csapp/内容/Aside/Chapter1/Aside 1.2.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Aside 1.2"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "26fbfe98b38374fe",
+    "type": "split",
+    "children": [
+      {
+        "id": "2554a768613eb624",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fa0bce33409b413",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "13d756ffeb1cf757",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4f906ca5d6ce0def",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "23e64f6c2a8ed079",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 393.5024719238281
+  },
+  "right": {
+    "id": "0cfcb4b3c2581553",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2b528424672dbfd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c3d03d1f159117ae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "学习/brew/停止自动更新.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "停止自动更新 的反向链接列表"
+            }
+          },
+          {
+            "id": "7b176fc92db7083f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "47a15e935047582c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "4f7bf199ad0ebdd7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "学习/brew/停止自动更新.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "停止自动更新 的大纲"
+            }
+          },
+          {
+            "id": "53ed94527571b752",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "094f566975f1d005",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-kanban:创建新看板": false,
+      "obsidian-git:Open Git source control": false,
+      "publish:发布更改": false,
+      "workspaces:管理工作区布局": false,
+      "audio-recorder:开始/结束录音": false,
+      "random-note:开始漫游笔记": false,
+      "zk-prefixer:创建时间戳笔记": false,
+      "markdown-importer:打开 Markdown 格式转换器": false
+    }
+  },
+  "active": "9fe029b82e29842a",
+  "lastOpenFiles": [
+    "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.2 Programs Are Translated by Other Programs into Different Forms.md",
+    "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.0 A Tour of Computer Systems.md",
+    "学习/路线（ai）.md",
+    "学习/学历和学位.md",
+    "未命名.base",
+    "未命名 1.base",
+    "测试/test.md",
+    "草稿/草稿.canvas",
+    "面试/浩传科技.md",
+    "面试/至爱智家.md",
+    "日常/acg/章鱼哔的原罪.md",
+    "日常/acg/动漫评分v2.md",
+    "日常/acg/动漫评分v1.md",
+    "日常/随/2025-9-7.md",
+    "学习/cs/大黑书/csapp/内容/Aside/Chapter1/Aside 1.1.md",
+    "学习/cs/大黑书/csapp/内容/Aside/Chapter1/Aside 1.2.md",
+    "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.3.md",
+    "学习/cs/大黑书/csapp/内容/Aside/Chapter1",
+    "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.2.md",
+    "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.1.md",
+    "学习/cs/大黑书/csapp/内容/Figure/Chapter1",
+    "学习/cs/大黑书/csapp/内容/Aside/📎附件/Pasted image 20251024203332.png",
+    "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/📎附件/Pasted image 20251024201548.png",
+    "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/📎附件",
+    "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.1 Information Is Bits + Context.md",
+    "学习/cs/大黑书/csapp/内容/Figure/📎附件/Pasted image 20251024195731.png",
+    "学习/cs/大黑书/csapp/内容/Figure/📎附件/Pasted image 20251024195702.png",
+    "学习/cs/大黑书/csapp/内容/Aside/📎附件/Pasted image 20251024194445.png",
+    "学习/cs/大黑书/csapp/内容/Aside/📎附件",
+    "学习/cs/大黑书/csapp/内容/Figure/📎附件/Pasted image 20251024194358.png",
+    "学习/cs/大黑书/csapp/内容/Figure/📎附件",
+    "学习/cs/大黑书/csapp/内容/Figure",
+    "学习/cs/大黑书/csapp/内容/Aside",
+    "学习/cs/大黑书/csapp/内容/0. preface/4. Book Overview.md",
+    "未命名 3.base",
+    "学习/路线1.md",
+    "学习/📎附件/Pasted image 20251023225800.png",
+    "学习/cs/大黑书/csapp/内容/0. preface/1. preface.md",
+    "学习/cs/大黑书/csapp/内容/0. preface/2. Assumptions about the Reader’s Background.md",
+    "学习/cs/大黑书/csapp/内容/0. preface/3. How to Read the Book.md",
+    "学习/python/算法/列表.md",
+    "学习/python/退出虚拟环境.md",
+    "学习/常用.md",
+    "学习/cs/大黑书/csapp/csapp.canvas",
+    "学习/阅读/百年孤独/百年孤独.canvas",
+    "学习/📎附件/Pasted image 20250708042510.png"
+  ]
+}

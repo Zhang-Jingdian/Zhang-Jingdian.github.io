@@ -5,7 +5,7 @@ const blog = defineCollection({
   // 使用 glob loader 加载 Markdown 和 MDX 文件
   loader: glob({ 
     base: './src/content/blog', 
-    pattern: '**/*.{md,mdx}' 
+    pattern: '**/*.{md,mdx}'
   }),
   
   // 使用 schema 函数形式，支持 image() 辅助函数

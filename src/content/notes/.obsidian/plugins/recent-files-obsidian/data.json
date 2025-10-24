@@ -1,0 +1,192 @@
+{
+  "recentFiles": [
+    {
+      "basename": "Aside 1.2",
+      "path": "学习/cs/大黑书/csapp/内容/Aside/Chapter1/Aside 1.2.md"
+    },
+    {
+      "basename": "1.2 Programs Are Translated by Other Programs into Different Forms",
+      "path": "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.2 Programs Are Translated by Other Programs into Different Forms.md"
+    },
+    {
+      "basename": "1.0 A Tour of Computer Systems",
+      "path": "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.0 A Tour of Computer Systems.md"
+    },
+    {
+      "basename": "路线（ai）",
+      "path": "学习/路线（ai）.md"
+    },
+    {
+      "basename": "学历和学位",
+      "path": "学习/学历和学位.md"
+    },
+    {
+      "basename": "test",
+      "path": "测试/test.md"
+    },
+    {
+      "basename": "草稿",
+      "path": "草稿/草稿.canvas"
+    },
+    {
+      "basename": "浩传科技",
+      "path": "面试/浩传科技.md"
+    },
+    {
+      "basename": "至爱智家",
+      "path": "面试/至爱智家.md"
+    },
+    {
+      "basename": "章鱼哔的原罪",
+      "path": "日常/acg/章鱼哔的原罪.md"
+    },
+    {
+      "basename": "动漫评分v2",
+      "path": "日常/acg/动漫评分v2.md"
+    },
+    {
+      "basename": "动漫评分v1",
+      "path": "日常/acg/动漫评分v1.md"
+    },
+    {
+      "basename": "2025-9-7",
+      "path": "日常/随/2025-9-7.md"
+    },
+    {
+      "basename": "Aside 1.1",
+      "path": "学习/cs/大黑书/csapp/内容/Aside/Chapter1/Aside 1.1.md"
+    },
+    {
+      "basename": "Figure 1.3",
+      "path": "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.3.md"
+    },
+    {
+      "basename": "Figure 1.2",
+      "path": "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.2.md"
+    },
+    {
+      "basename": "Figure 1.1",
+      "path": "学习/cs/大黑书/csapp/内容/Figure/Chapter1/Figure 1.1.md"
+    },
+    {
+      "basename": "1.1 Information Is Bits + Context",
+      "path": "学习/cs/大黑书/csapp/内容/1. A Tour of Computer Systems/1.1 Information Is Bits + Context.md"
+    },
+    {
+      "basename": "4. Book Overview",
+      "path": "学习/cs/大黑书/csapp/内容/0. preface/4. Book Overview.md"
+    },
+    {
+      "basename": "路线1",
+      "path": "学习/路线1.md"
+    },
+    {
+      "basename": "1. preface",
+      "path": "学习/cs/大黑书/csapp/内容/0. preface/1. preface.md"
+    },
+    {
+      "basename": "2. Assumptions about the Reader’s Background",
+      "path": "学习/cs/大黑书/csapp/内容/0. preface/2. Assumptions about the Reader’s Background.md"
+    },
+    {
+      "basename": "3. How to Read the Book",
+      "path": "学习/cs/大黑书/csapp/内容/0. preface/3. How to Read the Book.md"
+    },
+    {
+      "basename": "列表",
+      "path": "学习/python/算法/列表.md"
+    },
+    {
+      "basename": "退出虚拟环境",
+      "path": "学习/python/退出虚拟环境.md"
+    },
+    {
+      "basename": "常用",
+      "path": "学习/常用.md"
+    },
+    {
+      "basename": "Lecture",
+      "path": "学习/cs/cs61a/week1/Lecture.md"
+    },
+    {
+      "basename": "python",
+      "path": "学习/cs/cs61a/cs61a-废弃/python.md"
+    },
+    {
+      "basename": "lab04",
+      "path": "学习/cs/cs61a/cs61a-废弃/lab04.md"
+    },
+    {
+      "basename": "hw01",
+      "path": "学习/cs/cs61a/cs61a-废弃/hw01.md"
+    },
+    {
+      "basename": "csapp",
+      "path": "学习/cs/大黑书/csapp/csapp.canvas"
+    },
+    {
+      "basename": "百年孤独",
+      "path": "学习/阅读/百年孤独/百年孤独.canvas"
+    },
+    {
+      "basename": "第二语言习得理论（Second Language Acquisition Theory）",
+      "path": "学习/语言学习/第二语言习得理论（Second Language Acquisition Theory）.md"
+    },
+    {
+      "basename": "网站",
+      "path": "学习/信安/pwn/网站.md"
+    },
+    {
+      "basename": "做题流程",
+      "path": "学习/信安/pwn/做题流程.md"
+    },
+    {
+      "basename": "pwndbg怎么看",
+      "path": "学习/信安/pwn/pwndbg怎么看.md"
+    },
+    {
+      "basename": "安装vm-tools",
+      "path": "学习/虚拟机/安装vm-tools.md"
+    },
+    {
+      "basename": "网站",
+      "path": "学习/信安/web/网站.md"
+    },
+    {
+      "basename": "recursion",
+      "path": "学习/cs/cs61a/cs61a-废弃/lecture/recursion.md"
+    },
+    {
+      "basename": "前端monorepo架构",
+      "path": "学习/开发/前端/前端monorepo架构.md"
+    },
+    {
+      "basename": "优化",
+      "path": "提示词/优化.md"
+    },
+    {
+      "basename": "high-order-function",
+      "path": "学习/cs/cs61a/cs61a-废弃/lecture/high-order-function.md"
+    },
+    {
+      "basename": "远程桌面",
+      "path": "学习/远程连接/远程桌面.md"
+    },
+    {
+      "basename": "VNC",
+      "path": "学习/远程连接/VNC.md"
+    },
+    {
+      "basename": "远程容器开发环境搭建记录",
+      "path": "学习/远程连接/远程容器开发环境搭建记录.md"
+    },
+    {
+      "basename": "mac用ssh连接linux",
+      "path": "学习/远程连接/ssh/mac用ssh连接linux.md"
+    }
+  ],
+  "omittedPaths": [],
+  "omittedTags": [],
+  "updateOn": "file-open",
+  "omitBookmarks": false
+}

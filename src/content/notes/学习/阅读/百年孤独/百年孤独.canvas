@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"3c4e808dd52f262e","x":-172,"y":18,"width":250,"height":60,"type":"text","text":"百年孤独"},
+		{"id":"96207753ca001adc","x":160,"y":23,"width":367,"height":50,"type":"text","text":"ONE HUNDRED YEARS OF SOLITUDE"},
+		{"id":"8e9b0f2e6356d5ca","x":756,"y":-479,"width":250,"height":60,"type":"text","text":"character "},
+		{"id":"df586a71f3e8d1ee","x":1185,"y":-620,"width":250,"height":60,"type":"text","text":"Colonel Aureliano Buendía"}
+	],
+	"edges":[
+		{"id":"63af5f22a0eb5b0e","fromNode":"3c4e808dd52f262e","fromSide":"right","toNode":"96207753ca001adc","toSide":"left"},
+		{"id":"50ce207fa9559520","fromNode":"96207753ca001adc","fromSide":"right","toNode":"8e9b0f2e6356d5ca","toSide":"left"},
+		{"id":"d98431d66367909c","fromNode":"8e9b0f2e6356d5ca","fromSide":"right","toNode":"df586a71f3e8d1ee","toSide":"left"}
+	]
+}
