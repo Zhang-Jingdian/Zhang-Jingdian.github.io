@@ -26,6 +26,9 @@ const posts = allPosts.map((post) => ({
     tags: post.data.tags || [],
   },
 }))
+
+// 检测是否在 Vercel 环境
+const isVercel = import.meta.env.VERCEL === '1' || Astro.site?.hostname.includes('vercel.app')
 ---
 
 <!DOCTYPE html>
@@ -45,7 +48,7 @@ const posts = allPosts.map((post) => ({
 		<!-- 页脚 - 进入视口时才加载（性能优化） -->
 		<BaseFooter client:visible />
 		
-		<!-- Vercel Speed Insights - 性能监控 -->
-		<SpeedInsights />
+		<!-- Vercel Speed Insights - 仅在 Vercel 环境下加载 -->
+		{isVercel && <SpeedInsights />}
 	</body>
 </html>
