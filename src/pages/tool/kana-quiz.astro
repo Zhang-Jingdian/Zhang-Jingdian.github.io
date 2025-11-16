@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import KanaQuizComponent from '@/components/KanaQuiz/KanaQuiz.astro'
+---
+
+<BaseLayout
+  title="日语五十音测试"
+  description="在线日语假名学习测试工具，支持平假名、片假名、罗马音互转练习"
+  keywords={['日语', '五十音', '假名测试', '学习工具']}
+>
+  <main class="mx-auto max-w-7xl px-4 py-12">
+    <!-- 页面标题 -->
+    <div class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-neutral-900 mb-4">
+        🇯🇵 日语五十音测试
+      </h1>
+      <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+        通过选择题的方式练习日语假名记忆，支持多种测试模式
+      </p>
+    </div>
+
+    <!-- 测试组件 -->
+    <KanaQuizComponent />
+
+    <!-- 使用说明 -->
+    <div class="mt-12 rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+      <h2 class="text-2xl font-semibold text-neutral-900 mb-4">📚 使用说明</h2>
+      
+      <div class="space-y-4 text-neutral-700">
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">测试模式</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>平假名 → 罗马音</strong>：给出平假名，选择对应的罗马音</li>
+            <li><strong>片假名 → 罗马音</strong>：给出片假名，选择对应的罗马音</li>
+            <li><strong>罗马音 → 平假名</strong>：给出罗马音，选择对应的平假名</li>
+            <li><strong>罗马音 → 片假名</strong>：给出罗马音，选择对应的片假名</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">功能特点</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li>✨ 随机出题，每次都不一样</li>
+            <li>📊 实时统计正确率</li>
+            <li>🎯 四选一选择题模式</li>
+            <li>💯 即时反馈，显示正确答案</li>
+            <li>🔄 支持随时切换测试模式</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">学习建议</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li>从<strong>平假名 → 罗马音</strong>开始，先熟悉平假名</li>
+            <li>掌握平假名后，练习<strong>罗马音 → 平假名</strong>巩固记忆</li>
+            <li>再学习片假名，重复同样的练习步骤</li>
+            <li>每天坚持练习 10-15 分钟，效果最佳</li>
+            <li>目标：正确率达到 90% 以上</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">五十音表范围</h3>
+          <p class="ml-4">包含基础五十音 46 个（あ行、か行、さ行、た行、な行、は行、ま行、や行、ら行、わ行）</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 返回按钮 -->
+    <div class="mt-8 text-center">
+      <a
+        href="/blog/kana-quiz-tool"
+        class="inline-flex items-center text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回博客文章
+      </a>
+    </div>
+  </main>
+</BaseLayout>

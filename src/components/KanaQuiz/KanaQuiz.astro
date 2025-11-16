@@ -1,0 +1,11 @@
+---
+import KanaQuizClient from './KanaQuizClient.vue'
+
+interface Props {
+  theme?: 'default' | 'dark'
+}
+
+const { theme = 'default' } = Astro.props
+---
+
+<KanaQuizClient theme={theme} client:load />
