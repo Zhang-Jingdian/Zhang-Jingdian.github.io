@@ -4,8 +4,12 @@ import { cn } from '@/lib/utils'
 import {
   kanaData,
   quizModeLabels,
+  difficultyLabels,
+  difficultyDescriptions,
+  getKanaByDifficulty,
   kanaQuizVariants,
   type QuizMode,
+  type DifficultyLevel,
   type Kana,
   type QuizStats,
 } from './index'
@@ -18,8 +22,9 @@ const props = withDefaults(defineProps<Props>(), {
   theme: 'default',
 })
 
-// 测试模式
+// 测试模式和难度
 const quizMode = ref<QuizMode>('hiragana-to-romaji')
+const difficulty = ref<DifficultyLevel>('basic')
 const isStarted = ref(false)
 
 // 当前题目
@@ -72,9 +77,12 @@ const correctAnswer = computed(() => {
   }
 })
 
+// 获取当前难度的假名数据
+const currentKanaData = computed(() => getKanaByDifficulty(difficulty.value))
+
 // 生成随机选项
 function generateOptions(correct: string, count: number = 4): string[] {
-  const allOptions = kanaData.map(k => {
+  const allOptions = currentKanaData.value.map(k => {
     switch (quizMode.value) {
       case 'hiragana-to-romaji':
       case 'katakana-to-romaji':
@@ -103,8 +111,9 @@ function generateOptions(correct: string, count: number = 4): string[] {
 
 // 生成新题目
 function generateQuestion() {
-  const randomIndex = Math.floor(Math.random() * kanaData.length)
-  currentKana.value = kanaData[randomIndex]
+  const kanaList = currentKanaData.value
+  const randomIndex = Math.floor(Math.random() * kanaList.length)
+  currentKana.value = kanaList[randomIndex]
   options.value = generateOptions(correctAnswer.value)
   selectedAnswer.value = ''
   isAnswered.value = false
@@ -164,29 +173,55 @@ function changeMode(mode: QuizMode) {
 <template>
   <div :class="cn(kanaQuizVariants({ theme }), 'text-neutral-900 dark:text-neutral-100')">
     <!-- 未开始状态 -->
-    <div v-if="!isStarted" class="text-center space-y-6">
+    <div v-if="!isStarted" class="text-center space-y-8">
       <div>
         <h2 class="text-3xl font-semibold mb-2">🇯🇵 日语五十音测试</h2>
         <p class="text-neutral-600 dark:text-neutral-400">
-          选择测试模式，开始练习假名记忆
+          选择测试模式和难度，开始练习假名记忆
         </p>
       </div>
 
+      <!-- 难度选择 -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4 text-neutral-900 dark:text-neutral-100">选择难度</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+          <button
+            v-for="(label, level) in difficultyLabels"
+            :key="level"
+            @click="difficulty = level as DifficultyLevel"
+            :class="[
+              'p-4 rounded-lg border-2 transition-all',
+              difficulty === level
+                ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-800'
+                : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600'
+            ]"
+          >
+            <div class="font-semibold mb-1">{{ label }}</div>
+            <div class="text-xs text-neutral-600 dark:text-neutral-400">
+              {{ difficultyDescriptions[level as DifficultyLevel] }}
+            </div>
+          </button>
+        </div>
+      </div>
+
       <!-- 模式选择 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-        <button
-          v-for="(label, mode) in quizModeLabels"
-          :key="mode"
-          @click="quizMode = mode as QuizMode"
-          :class="[
-            'p-4 rounded-lg border-2 transition-all font-medium',
-            quizMode === mode
-              ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-800'
-              : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600'
-          ]"
-        >
-          {{ label }}
-        </button>
+      <div>
+        <h3 class="text-lg font-semibold mb-4 text-neutral-900 dark:text-neutral-100">选择测试模式</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <button
+            v-for="(label, mode) in quizModeLabels"
+            :key="mode"
+            @click="quizMode = mode as QuizMode"
+            :class="[
+              'p-4 rounded-lg border-2 transition-all font-medium',
+              quizMode === mode
+                ? 'border-neutral-900 dark:border-neutral-100 bg-neutral-100 dark:bg-neutral-800'
+                : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600'
+            ]"
+          >
+            {{ label }}
+          </button>
+        </div>
       </div>
 
       <button
@@ -203,13 +238,13 @@ function changeMode(mode: QuizMode) {
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-4">
           <span class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-            模式: {{ quizModeLabels[quizMode] }}
+            {{ difficultyLabels[difficulty] }} · {{ quizModeLabels[quizMode] }}
           </span>
           <button
             @click="restart"
             class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
           >
-            切换模式
+            切换设置
           </button>
         </div>
         <div class="flex items-center gap-4 text-sm">

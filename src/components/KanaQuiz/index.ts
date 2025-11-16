@@ -80,6 +80,96 @@ export const kanaData: Kana[] = [
   { hiragana: 'わ', katakana: 'ワ', romaji: 'wa' },
   { hiragana: 'を', katakana: 'ヲ', romaji: 'wo' },
   { hiragana: 'ん', katakana: 'ン', romaji: 'n' },
+  
+  // 浊音 - が行
+  { hiragana: 'が', katakana: 'ガ', romaji: 'ga' },
+  { hiragana: 'ぎ', katakana: 'ギ', romaji: 'gi' },
+  { hiragana: 'ぐ', katakana: 'グ', romaji: 'gu' },
+  { hiragana: 'げ', katakana: 'ゲ', romaji: 'ge' },
+  { hiragana: 'ご', katakana: 'ゴ', romaji: 'go' },
+  
+  // 浊音 - ざ行
+  { hiragana: 'ざ', katakana: 'ザ', romaji: 'za' },
+  { hiragana: 'じ', katakana: 'ジ', romaji: 'ji' },
+  { hiragana: 'ず', katakana: 'ズ', romaji: 'zu' },
+  { hiragana: 'ぜ', katakana: 'ゼ', romaji: 'ze' },
+  { hiragana: 'ぞ', katakana: 'ゾ', romaji: 'zo' },
+  
+  // 浊音 - だ行
+  { hiragana: 'だ', katakana: 'ダ', romaji: 'da' },
+  { hiragana: 'ぢ', katakana: 'ヂ', romaji: 'di' },
+  { hiragana: 'づ', katakana: 'ヅ', romaji: 'du' },
+  { hiragana: 'で', katakana: 'デ', romaji: 'de' },
+  { hiragana: 'ど', katakana: 'ド', romaji: 'do' },
+  
+  // 浊音 - ば行
+  { hiragana: 'ば', katakana: 'バ', romaji: 'ba' },
+  { hiragana: 'び', katakana: 'ビ', romaji: 'bi' },
+  { hiragana: 'ぶ', katakana: 'ブ', romaji: 'bu' },
+  { hiragana: 'べ', katakana: 'ベ', romaji: 'be' },
+  { hiragana: 'ぼ', katakana: 'ボ', romaji: 'bo' },
+  
+  // 半浊音 - ぱ行
+  { hiragana: 'ぱ', katakana: 'パ', romaji: 'pa' },
+  { hiragana: 'ぴ', katakana: 'ピ', romaji: 'pi' },
+  { hiragana: 'ぷ', katakana: 'プ', romaji: 'pu' },
+  { hiragana: 'ぺ', katakana: 'ペ', romaji: 'pe' },
+  { hiragana: 'ぽ', katakana: 'ポ', romaji: 'po' },
+  
+  // 拗音 - きゃ行
+  { hiragana: 'きゃ', katakana: 'キャ', romaji: 'kya' },
+  { hiragana: 'きゅ', katakana: 'キュ', romaji: 'kyu' },
+  { hiragana: 'きょ', katakana: 'キョ', romaji: 'kyo' },
+  
+  // 拗音 - しゃ行
+  { hiragana: 'しゃ', katakana: 'シャ', romaji: 'sha' },
+  { hiragana: 'しゅ', katakana: 'シュ', romaji: 'shu' },
+  { hiragana: 'しょ', katakana: 'ショ', romaji: 'sho' },
+  
+  // 拗音 - ちゃ行
+  { hiragana: 'ちゃ', katakana: 'チャ', romaji: 'cha' },
+  { hiragana: 'ちゅ', katakana: 'チュ', romaji: 'chu' },
+  { hiragana: 'ちょ', katakana: 'チョ', romaji: 'cho' },
+  
+  // 拗音 - にゃ行
+  { hiragana: 'にゃ', katakana: 'ニャ', romaji: 'nya' },
+  { hiragana: 'にゅ', katakana: 'ニュ', romaji: 'nyu' },
+  { hiragana: 'にょ', katakana: 'ニョ', romaji: 'nyo' },
+  
+  // 拗音 - ひゃ行
+  { hiragana: 'ひゃ', katakana: 'ヒャ', romaji: 'hya' },
+  { hiragana: 'ひゅ', katakana: 'ヒュ', romaji: 'hyu' },
+  { hiragana: 'ひょ', katakana: 'ヒョ', romaji: 'hyo' },
+  
+  // 拗音 - みゃ行
+  { hiragana: 'みゃ', katakana: 'ミャ', romaji: 'mya' },
+  { hiragana: 'みゅ', katakana: 'ミュ', romaji: 'myu' },
+  { hiragana: 'みょ', katakana: 'ミョ', romaji: 'myo' },
+  
+  // 拗音 - りゃ行
+  { hiragana: 'りゃ', katakana: 'リャ', romaji: 'rya' },
+  { hiragana: 'りゅ', katakana: 'リュ', romaji: 'ryu' },
+  { hiragana: 'りょ', katakana: 'リョ', romaji: 'ryo' },
+  
+  // 拗音浊音 - ぎゃ行
+  { hiragana: 'ぎゃ', katakana: 'ギャ', romaji: 'gya' },
+  { hiragana: 'ぎゅ', katakana: 'ギュ', romaji: 'gyu' },
+  { hiragana: 'ぎょ', katakana: 'ギョ', romaji: 'gyo' },
+  
+  // 拗音浊音 - じゃ行
+  { hiragana: 'じゃ', katakana: 'ジャ', romaji: 'ja' },
+  { hiragana: 'じゅ', katakana: 'ジュ', romaji: 'ju' },
+  { hiragana: 'じょ', katakana: 'ジョ', romaji: 'jo' },
+  
+  // 拗音浊音 - びゃ行
+  { hiragana: 'びゃ', katakana: 'ビャ', romaji: 'bya' },
+  { hiragana: 'びゅ', katakana: 'ビュ', romaji: 'byu' },
+  { hiragana: 'びょ', katakana: 'ビョ', romaji: 'byo' },
+  
+  // 拗音半浊音 - ぴゃ行
+  { hiragana: 'ぴゃ', katakana: 'ピャ', romaji: 'pya' },
+  { hiragana: 'ぴゅ', katakana: 'ピュ', romaji: 'pyu' },
+  { hiragana: 'ぴょ', katakana: 'ピョ', romaji: 'pyo' },
 ]
 
 /**
@@ -92,6 +182,46 @@ export const quizModeLabels: Record<QuizMode, string> = {
   'katakana-to-romaji': '片假名 → 罗马音',
   'romaji-to-hiragana': '罗马音 → 平假名',
   'romaji-to-katakana': '罗马音 → 片假名',
+}
+
+/**
+ * 难度级别
+ */
+export type DifficultyLevel = 'basic' | 'dakuten' | 'yoon' | 'all'
+
+export const difficultyLabels: Record<DifficultyLevel, string> = {
+  'basic': '基础（清音）',
+  'dakuten': '浊音/半浊音',
+  'yoon': '拗音',
+  'all': '全部',
+}
+
+export const difficultyDescriptions: Record<DifficultyLevel, string> = {
+  'basic': '46个基础假名（あ～ん）',
+  'dakuten': '浊音（が～ぼ）+ 半浊音（ぱ～ぽ）',
+  'yoon': '拗音（きゃ～ぴょ）',
+  'all': '全部假名（104个）',
+}
+
+/**
+ * 根据难度获取假名数据
+ */
+export function getKanaByDifficulty(difficulty: DifficultyLevel): Kana[] {
+  const basicCount = 46
+  const dakutenCount = 71 // 基础 + 浊音/半浊音
+  
+  switch (difficulty) {
+    case 'basic':
+      return kanaData.slice(0, basicCount)
+    case 'dakuten':
+      return kanaData.slice(basicCount, dakutenCount)
+    case 'yoon':
+      return kanaData.slice(dakutenCount)
+    case 'all':
+      return kanaData
+    default:
+      return kanaData.slice(0, basicCount)
+  }
 }
 
 /**

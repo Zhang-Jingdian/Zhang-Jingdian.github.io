@@ -28,6 +28,16 @@ import KanaQuizComponent from '@/components/KanaQuiz/KanaQuiz.astro'
       
       <div class="space-y-4 text-neutral-700">
         <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">难度级别</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>基础（清音）</strong>：46个基础假名（あ～ん）</li>
+            <li><strong>浊音/半浊音</strong>：25个浊音假名（が～ぼ）+ 5个半浊音（ぱ～ぽ）</li>
+            <li><strong>拗音</strong>：33个拗音假名（きゃ～ぴょ）</li>
+            <li><strong>全部</strong>：104个假名，完整五十音图</li>
+          </ul>
+        </div>
+
+        <div>
           <h3 class="font-semibold text-neutral-900 mb-2">测试模式</h3>
           <ul class="list-disc list-inside space-y-1 ml-4">
             <li><strong>平假名 → 罗马音</strong>：给出平假名，选择对应的罗马音</li>
@@ -51,17 +61,27 @@ import KanaQuizComponent from '@/components/KanaQuiz/KanaQuiz.astro'
         <div>
           <h3 class="font-semibold text-neutral-900 mb-2">学习建议</h3>
           <ul class="list-disc list-inside space-y-1 ml-4">
-            <li>从<strong>平假名 → 罗马音</strong>开始，先熟悉平假名</li>
-            <li>掌握平假名后，练习<strong>罗马音 → 平假名</strong>巩固记忆</li>
-            <li>再学习片假名，重复同样的练习步骤</li>
+            <li>从<strong>基础（清音）</strong>开始，先熟悉46个基础假名</li>
+            <li>掌握基础后，练习<strong>浊音/半浊音</strong></li>
+            <li>最后挑战<strong>拗音</strong>，完整掌握所有假名</li>
+            <li>建议先练<strong>平假名 → 罗马音</strong>，再练<strong>罗马音 → 平假名</strong></li>
             <li>每天坚持练习 10-15 分钟，效果最佳</li>
             <li>目标：正确率达到 90% 以上</li>
           </ul>
         </div>
 
         <div>
+          <h3 class="font-semibold text-neutral-900 mb-2">假名知识</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>浊音</strong>：在清音基础上加浊点（゛），如：か→が</li>
+            <li><strong>半浊音</strong>：在は行基础上加半浊点（゜），如：は→ぱ</li>
+            <li><strong>拗音</strong>：由假名 + 小假名（ゃゅょ）组成，如：きゃ</li>
+          </ul>
+        </div>
+
+        <div>
           <h3 class="font-semibold text-neutral-900 mb-2">五十音表范围</h3>
-          <p class="ml-4">包含基础五十音 46 个（あ行、か行、さ行、た行、な行、は行、ま行、や行、ら行、わ行）</p>
+          <p class="ml-4">共104个假名：基础清音46个 + 浊音/半浊音30个 + 拗音33个</p>
         </div>
       </div>
     </div>
